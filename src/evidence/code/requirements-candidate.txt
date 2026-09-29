@@ -1,0 +1,7 @@
+# Runtime imports used by the immutable exact-algebra checkers.
+# These match the environment of the recorded successful local replays.
+numpy==2.5.3
+scipy==1.18.1
+sympy==1.14.0
+# gmpy2 is not required by replay_portable.py: geometric replays select Fraction.
+# The packaged historical Darwin GMP binary is provenance data, never loaded.

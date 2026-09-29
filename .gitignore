@@ -1,0 +1,11 @@
+# Generated verification runs and local environments never belong in publication.
+/work/
+/.venv/
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+.env
+.env.*
+*.partial
+/.composition-check/

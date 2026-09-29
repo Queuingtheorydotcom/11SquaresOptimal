@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 572 600" role="img" aria-labelledby="title desc">
+<title id="title">Known optimal eleven-square packing</title>
+<desc id="desc">Six axis-aligned and five tilted congruent squares. Rounded illustration; exact coordinates are in the proof.</desc>
+<rect width="572" height="600" fill="#ffffff"/>
+<polygon points="36.00000,536.00000 164.96291,536.00000 164.96291,407.03709 36.00000,407.03709" fill="#dceef4" stroke="#244657" stroke-width="1.4"/>
+<text x="100.4815" y="471.5185" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">0</text>
+<polygon points="407.03709,536.00000 536.00000,536.00000 536.00000,407.03709 407.03709,407.03709" fill="#dceef4" stroke="#244657" stroke-width="1.4"/>
+<text x="471.5185" y="471.5185" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">1</text>
+<polygon points="298.12464,164.96291 427.08756,164.96291 427.08756,36.00000 298.12464,36.00000" fill="#dceef4" stroke="#244657" stroke-width="1.4"/>
+<text x="362.6061" y="100.4815" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">2</text>
+<polygon points="36.00000,164.96291 164.96291,164.96291 164.96291,36.00000 36.00000,36.00000" fill="#dceef4" stroke="#244657" stroke-width="1.4"/>
+<text x="100.4815" y="100.4815" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">3</text>
+<polygon points="164.96291,164.96291 293.92583,164.96291 293.92583,36.00000 164.96291,36.00000" fill="#dceef4" stroke="#244657" stroke-width="1.4"/>
+<text x="229.4444" y="100.4815" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">4</text>
+<polygon points="36.00000,293.92583 164.96291,293.92583 164.96291,164.96291 36.00000,164.96291" fill="#dceef4" stroke="#244657" stroke-width="1.4"/>
+<text x="100.4815" y="229.4444" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">5</text>
+<polygon points="192.41429,439.54219 290.94189,356.33314 207.73285,257.80554 109.20525,341.01459" fill="#f7dfad" stroke="#244657" stroke-width="1.4"/>
+<text x="200.0736" y="348.6739" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">6</text>
+<polygon points="278.07417,536.00000 376.60177,452.79095 293.39272,354.26335 194.86512,437.47240" fill="#f7dfad" stroke="#244657" stroke-width="1.4"/>
+<text x="285.7334" y="445.1317" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">7</text>
+<polygon points="281.05811,344.62977 379.58571,261.42073 296.37666,162.89313 197.84906,246.10218" fill="#f7dfad" stroke="#244657" stroke-width="1.4"/>
+<text x="288.7174" y="253.7615" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">8</text>
+<polygon points="366.71798,441.08759 465.24558,357.87854 382.03653,259.35094 283.50893,342.55999" fill="#f7dfad" stroke="#244657" stroke-width="1.4"/>
+<text x="374.3773" y="350.2193" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">9</text>
+<polygon points="437.47240,324.99240 536.00000,241.78335 452.79095,143.25575 354.26335,226.46480" fill="#f7dfad" stroke="#244657" stroke-width="1.4"/>
+<text x="445.1317" y="234.1241" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="15" fill="#244657">10</text>
+<rect x="36" y="36" width="500" height="500" fill="none" stroke="#142c39" stroke-width="2"/>
+<text x="286" y="572" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#142c39">T = 3.877083590022814…</text>
+</svg>
