@@ -16,7 +16,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\emergencystretch}{2em}
 \title{\textcolor{ink}{Eleven squares:\\owners, support chains, and angle penalties}\\[5pt]
-\large A geometric compression of the computer-assisted argument}
+\large Research revision with an early geometric reduction}
 \author{}
 \date{8 October 2026}
 \begin{document}
@@ -25,18 +25,19 @@
 \begin{abstract}
 We give a computer-assisted proof of the optimal side length for packing
 eleven unit squares in a square, with arbitrary rotations and boundary
-contact. Twelve markers organize the global alternatives. Corner
-replacement and strip-support lemmas reduce the surviving case to a coarse
-rational envelope. A positive combination of two support chains then
-rules out improvement while allowing the five tilted squares to rotate
-independently: angle disagreement pays for the cost of comparing the
-support sum with its common-angle value. The endpoint uses four
-one-dimensional interval slices, without fine capture or local contact
-branches. We also shorten three ownership exclusions and several
-separator arguments. The proof combines displayed geometric and analytic
-lemmas with freshly replayed exact-rational finite certificates. The
-supplement separates the small endpoint checks from the full global
-replay and states the computational trust model explicitly.
+contact. Twelve markers organize the global alternatives. In the surviving
+case, a slanted roof and a bottom-wall support bound force an early
+corridor. A scalar strip argument then gives a virtual row; one exact
+pose-cover round gives a virtual column, and one further round replaces
+four spatial exclusions. The reduction of this surviving case has $103$
+dependency nodes. A positive combination of two support chains rules out improvement
+while allowing five tilted squares to rotate independently: angle
+disagreement pays for the comparison with their common-angle value.
+This endpoint needs only four interval slices and a coarse rational envelope.
+The geometric primitives are proved explicitly, and finite exact-rational
+certificates supply the remaining global deductions. This research revision
+uses completed local replays and a revalidated dependency assembly. A
+portable replay command is supplied; it has not been executed end to end.
 \end{abstract}
 
 \section{The argument in three ideas}
@@ -61,10 +62,12 @@ so an unused marker or a shared pair is unavoidable. Symmetry leaves
 eight alternatives. The surviving alternative has the two adjacent inner
 markers in the same square.
 
-\textbf{Force only a coarse shape.} Normalize two corner squares and use
-two strip-support arguments. The remaining global computation confines
-the relevant squares to short rational intervals. We need their broad
-locations and possible separating directions, not their final coordinates.
+\textbf{Force only a coarse shape.} A roof above the common owner and a
+wall below its neighbour force a corridor. After two corner replacements,
+two strip-support arguments, separated by one pose-cover round, give a
+virtual row and column. One further round replaces four spatial exclusions.
+The remaining global computation confines the relevant squares to short
+rational intervals and determines their possible separating directions.
 
 \textbf{Pay for angle disagreement.} For two nearly parallel squares,
 nonoverlap gives a positive term proportional to their angle difference.
@@ -155,9 +158,9 @@ Theorem~\ref{thm:mixed-support}.
 \end{proposition}
 \begin{proof}
 Choose the normalized side $a$ with
-$a_*<a<A_+$ as in Section~\ref{hybrid:ownership}; the container has side
-$S=97/25$ and returning to unit squares gives $L=S/a<T$.
-The marker-cover and ownership lemmas give eight alternatives.
+$a_*<a<A_+$ as in Section~\ref{hybrid:ownership}. The container has side
+$S=97/25$, we have $A_-<a<A_+$, and returning to unit squares gives
+$L=S/a<T$. The marker-cover and ownership lemmas give eight alternatives.
 The exact certificates exclude cases $0$--$5$, and
 Lemma~\ref{hybrid:opposite-inner} excludes case $7$. Thus only case $6$
 remains, with common owner $G$ of $I_0,I_1$.
@@ -171,30 +174,106 @@ $[0,5/48)\cup(43/48,1]$. All branch endpoints are covered.
 The coarse bounds and Proposition~\ref{prop:first-corner} permit the
 first corner replacement. The separate obstruction exclusion and compact
 separator argument in Appendix~\ref{app:second-corner-separator} permit
-the second. Both replacements preserve the side length, ownership case
-and angle of $G$; complete pose covers are regenerated afterward.
+the second. Only the two upper-corner owners move; the side length,
+ownership case, angle of $G$, and the other nine squares are preserved.
+We regenerate a complete pose cover after these replacements.
 
-Iterate the necessary pose-cover rules, closed spatial exclusions and
-virtual-support deductions in the supplement's dependency order.
-Lemma~\ref{lem:rational-pose-bin} supplies valid enclosures on whole
-angle intervals. Lemma~\ref{hybrid:boundary-neighborhood} and its
-instantiation preserve actual centers through clipping, compatibility
-pruning and rounding, including boundary contact. Each spatial exclusion
-covers its closed contrary halfplane, so its surviving strict bound loses
-no boundary case. The compact common-separator arguments in
-Appendices~\ref{app:early-column} and \ref{app:early-bottom-row}, together
-with the strip theorem, give the two label-specific virtual supports.
+Write $C_R=(X_R,Y_R)$ for the center of owner $R$. The seven initial
+root rounds and the angle restriction already imply, by the all-angle
+corridor lemma in Appendix~\ref{app:early-corridor},
+\begin{equation}\label{eq:global-early-centers}
+ X_{W_0}>\frac{21}{10},\qquad X_{C_1}>\frac{291}{100}.
+\end{equation}
+The lemma uses the initial compulsory points, the slanted roof above
+$G$, and square support inequalities. These premises concern unchanged
+owners, so its conclusions survive both corner replacements.
 
-Every finite transition in this reduction has been replayed, with its
-input and checker identities bound to the accepted parents. The selected
-case-6 dependency graph has $119$ nodes and closes at the fifth prefix
-of the final $N=384$ journal and its direct-support ending. Exact outward
-comparison puts that prefix inside the three-decimal envelope
-$\mathcal E$ of Section~\ref{sec:mixed-alignment}. The feature and sign
-checks there establish the required corner, wall, bridge and two-normal
-separator premises for every feasible packing in the entire envelope.
-Scaling back to unit squares
-and applying the half-turn therefore gives the asserted representative.
+We next obtain two virtual supports in succession. For an owner $R$
+with edge angle $\theta_R$, put
+$c_R=\cos\theta_R$, $s_R=\sin\theta_R$, and
+$n_R=(-s_R,c_R)$. The scalar early-row argument in
+Appendix~\ref{app:early-bottom-row}, applied to the original two-corner
+cover and \eqref{eq:global-early-centers}, gives
+\begin{equation}\label{eq:global-early-row}
+ n_G\cdot C_G\ge -s_GS+a(2s_G+c_G+1/2).
+\end{equation}
+Its strip estimate is the direction-dependent estimate for width
+$33a/20$; the narrower $3a/2$ strip theorem alone is insufficient at
+this stage. The support is a necessary inequality for $G$ and does not
+assert that a row of squares has been inserted into the packing.
+
+Apply one exact pose-cover round with \eqref{eq:global-early-centers}
+and \eqref{eq:global-early-row}, using $96$ half-angle intervals.
+On the resulting cover, the full-square strip and separating-axis
+argument in Appendix~\ref{app:early-column} gives
+\begin{equation}\label{eq:global-early-column}
+ n_{I_2}\cdot C_{I_2}
+ \ge -s_{I_2}S+a(s_{I_2}+2c_{I_2}+1/2).
+\end{equation}
+Here the two right-hand squares lie in a strip of width $3a/2$, so
+the original two-square strip theorem applies. One further exact round,
+now using both supports, supplies four useful spatial bounds.
+
+For precision, the following are the extrema over the complete
+second-round center cover, computed as extrema of rational linear
+functions on its polygons. The last column records weaker bounds used
+by the subsequent reduction.
+\begin{center}
+\renewcommand{\arraystretch}{1.65}
+\begin{tabular}{c@{\qquad}c@{\qquad}c}
+Quantity & Exact cover extremum & Consequence for every packing\\ \hline
+$\min Y_{I_2}$ &
+$\dfrac{29564010978569329}{12685964832000000}$ &
+$Y_{I_2}>2.3304>2.3$\\
+$\max X_{I_3}$ &
+$\dfrac{1411619929}{1047000000}$ &
+$X_{I_3}<1.3483<1.36$\\
+$\max X_G$ &
+$\dfrac{229945466681933}{118884960000000}$ &
+$X_G<1.9342<1.94$\\
+$\max Y_G$ &
+$\dfrac{214285276379}{125715000000}$ &
+$Y_G<1.7046<1.705$
+\end{tabular}
+\end{center}
+The terminating decimals are exact rationals. In particular, each
+strict conclusion has a positive rational margin; it does not require
+discarding a boundary point of the pose cover.
+
+These four facts replace four spatial branch exclusions. The remaining
+reductions retain their own premises. In particular, the closed contrary
+branches proving $X_G>1.85$ and $Y_G>1.63$, the stronger right-hand bound
+$X_{C_1}>3.1$, and the later bounds $X_G>1.9$, $Y_G>1.67$ remain part of
+the proof. We also retain the unbranched compulsory-hull construction
+leading to the original seven-bound seed: its successive stages have
+$2$, $6$, and $8$ rounds. The new spatial facts justify the original
+halfplanes without replacing those hulls. Every later numerical cover
+and its hypotheses are therefore unchanged.
+
+Throughout, Lemma~\ref{lem:rational-pose-bin} encloses whole angle
+intervals. The relative-neighborhood argument of
+Lemma~\ref{hybrid:boundary-neighborhood}, including the endpoint-union
+rule for the early supports, preserves actual centers through clipping,
+compatibility pruning and outward rounding. Compulsory hulls are
+contained in their owners; normalized corner hulls may include wall
+points. The reference inner squares used for collision tests lie
+strictly inside their owners because $a>A_-$. Thus boundary contact
+does not invalidate any pruning step. Every retained spatial exclusion
+covers its closed contrary halfplane.
+
+The resulting case-6 dependency graph has $103$ nodes. Its exact
+certificate combines the newly replayed corridor, row, column and
+two-round interfaces with the unchanged later exact executions;
+the numerical halfplanes and their input identities are preserved,
+and all dependencies are revalidated. The two rounds above replace
+$21$ branch rounds, in addition to the earlier corridor simplification.
+The selected endpoint is still the fifth prefix of the final $N=384$
+journal. Exact outward comparison places this cover inside the
+three-decimal envelope $\mathcal E$ of
+Section~\ref{sec:mixed-alignment}. The feature and sign checks there
+establish all required corner, wall, bridge and two-normal separator
+premises throughout that envelope. Scaling back to unit squares and
+applying the half-turn gives the asserted representative.
 \end{proof}
 
 \begin{theorem}[Eleven squares, computer-assisted]\label{thm:optimality}
@@ -253,8 +332,11 @@ Every square of side greater than $1$ contained in $[0,S]^2$ owns at
 least one of the twelve markers.
 \end{lemma}
 \begin{proof}
-Apply the rectangle, triangle, and wall-quadrilateral nonavoidance
-lemmas of Stromquist~\cite{stromquist} to the position of the square's center. The required partition
+Apply the rectangle, triangle, and wall-quadrilateral rules proved in
+Appendix~\ref{app:nonavoidance}. The first two are Stromquist's
+Lemmas~1 and~2; the required wall rule is a directly proved variant of his
+Lemma~4~\cite{stromquist}. Apply them to the position of the square's center.
+The required partition
 consists of four $1$-by-$1$ corner rectangles, eight wall quadrilaterals,
 and fourteen triangles. The wall quadrilaterals have width $47/50$
 and inner endpoint heights $1$ and $3/4$.
@@ -265,10 +347,8 @@ $C_0,W_0,C_1,W_1,C_2,W_2,C_3,W_3$. Its triangles are the four rotations of
  (C_0,W_0,I_0),\quad(C_0,I_0,W_3),\quad(W_0,I_1,I_0),
 \]
 together with $(I_0,I_1,I_3)$ and $(I_1,I_2,I_3)$.
-Every triangle edge has length at most $1$. Centers on an edge cause no
-gap: a chord through the center of a square has length at least its
-side, so both endpoints of an edge of length at most $1$ cannot lie
-outside a square of side greater than $1$.
+Every triangle edge has length at most $1$. The rules include the closed
+boundaries of their center regions, so shared partition edges cause no gap.
 
 For a wall quadrilateral, the nonavoidance condition is
 \[
@@ -354,21 +434,26 @@ lemma says that a pair of squares in a shallow strip casts at least as
 large a shadow as a straight row, in every direction pointing into the
 first quadrant.
 
-\begin{theorem}[The strip lemma]
-\label{thm:strip}
-Let $P,Q$ be unit squares with disjoint interiors, both contained in
-$\{x\ge0,\ 0\le y\le3/2\}$. Then, for every $r>0$,
+\begin{theorem}[The strip lemma]\label{thm:strip}\label{lem:direction-strip}
+Fix $r>0$ and put
 \[
- h_{P\cup Q}(r,1)\ge 2r+1
-   =h_{[0,2]\times[0,1]}(r,1).
+ \alpha(r)=\frac{r+1}{\sqrt{1+r^2}+1}.
 \]
-The same support comparison holds for every nonnegative direction,
-including the coordinate directions by continuity.
+Let $P,Q$ be unit squares with disjoint interiors, both contained in
+$\{x\ge0,\ 0\le y\le H\}$, where $H\le1+\alpha(r)$. Then
+\[
+ h_{P\cup Q}(r,1)\ge2r+1
+     =h_{[0,2]\times[0,1]}(r,1).
+\]
+In particular, height $H=3/2$ works for every $r>0$.
+For that height the comparison extends to both coordinate directions
+by continuity.
 \end{theorem}
 
-The proof in Appendix~\ref{app:strip-proof} exhibits a point that would lie inside both squares if the support inequality failed.
-
-
+The proof in Appendix~\ref{app:strip-proof} exhibits a common point if
+the support inequality fails. Its boundary argument includes the limiting
+height $H=1+\alpha(r)$. The early row uses this wider, direction-dependent
+version; the column needs only height $3/2$.
 
 \paragraph{What the lemma allows us to replace.}
 It compares supports, not occupied regions. In particular, it does not
@@ -398,7 +483,7 @@ lie in $[0,S]^2$:
 \begin{tabular}{lll}
 Pair confined to & Virtual rectangle $E$ & Allowed normals\\[2pt]
 $x\ge S-3a/2$ & $[S-a,S]\times[0,2a]$ & $(-v,u)$, $u,v\ge0$\\
-$y\le3a/2$ & $[S-2a,S]\times[0,a]$ & $(-v,u)$, $u,v\ge0$.
+$y\le a[1+\alpha(v/u)]$ & $[S-2a,S]\times[0,a]$ & $(-v,u)$, $u,v>0$.
 \end{tabular}
 \end{center}
 For any particular neighbour $R$, a common separator must still be
@@ -428,10 +513,11 @@ through its lower $\nu$-edge, so $\nu\cdot(p-C)\le-a/2$. Consequently
 \begin{equation}\label{eq:virtual-unified}
  \boxed{\;-sX+cY\ge-sS+a\bigl(ms+nc+\tfrac12\bigr).\;}
 \end{equation}
-Thus the two virtual obstacles contribute the same elementary support
-inequality, with $m,n$ interchanged. For the two named applications, the
-global reduction supplies the pose bounds and common-separator premises;
-the strip lemma itself supplies the support comparison.
+Thus both virtual obstacles give the same support inequality, with
+$m,n$ interchanged. The column uses this corner argument. The early-row
+proof establishes the normal inequality directly by contradicting its
+failure. In either case the strip theorem supplies only the support
+comparison; the required common separator is established separately.
 
 
 \section{A mixed support inequality with independent angles}
@@ -793,7 +879,6 @@ the same rational interval calculation.  Closed angle-bin endpoints and
 all corner contacts are retained throughout.
 
 
-The strict margins also determine the six-square block at equality; see Corollary~\ref{cor:mixed-block-rigidity}.
 
 \section{Finite verification and its scope}\label{sec:verification}
 The computation has two roles. The global part excludes the other marker
@@ -822,13 +907,14 @@ compulsory regions, with the stated symmetry restrictions. Case $7$ has
 the elementary geometric exclusion.\\
 Shortened case $0$ & A segment and a seven-vertex polygon give an ending
 with $760$ promotions. Its required prefix and six new promotions are
-freshly checked. The full replay command also rechecks the original
-$794$-promotion exclusion.\\
+freshly checked. Its parent exclusions and terminal are the selected case-$0$ route;
+the original $794$-promotion certificate is a redundant comparison.\\
 Shortened cases $3,5$ & Respectively $62$ promotions in $11$ owner checks
 and $170$ in $32$ checks, each ending at a shared interior point.\\
-Surviving case $6$ & A closed $119$-node dependency graph joins the angle
+Surviving case $6$ & A closed $103$-node dependency graph joins the angle
 exclusions, corner interfaces, spatial deductions, virtual supports and
-selected endpoint. The nodes include the displayed mathematical rules.\\
+selected endpoint. It includes the early corridor, scalar row, one-round
+column and the four exact extrema after a second round.\\
 Direct endpoint & The fifth of twelve final coarse-cover rounds lies
 inside a three-decimal box. Exact feature and sign checks and four
 interval slices prove the independent-angle support bound.\\
@@ -846,12 +932,16 @@ The recorded counts above specify which argument or computation they
 measure; no claim of a minimum-size checker is made.
 
 \paragraph{Observed verification and portable replay.}
-All computational components used here were freshly replayed locally,
-and their input-bound dependencies were composed to close both the six
-ownership exclusions and the selected case-6 graph. The self-contained
-small checks also passed. The portable full-run command has been prepared
-and reviewed but has not yet been executed end to end; its reproduction
-procedure is described in Section~\ref{sec:reproducibility}.
+The six ownership exclusions retain their completed exact replays and
+accepted ancestry. The revised case-$6$ route combines freshly replayed
+early components with unchanged exact executions whose input identities,
+own-rule evidence and parent closure have been revalidated. All $103$
+nodes are accepted by that assembly. Independent checks also reject
+altered inputs, missing evidence and non-strict replacements of the new
+strict bounds. This records component execution and dependency closure;
+it does not report a newly executed portable end-to-end run. The supplied
+portable wrapper has passed its conditional early-component replay and
+source/control-flow checks. Its full command has not been run end to end.
 
 \paragraph{Boundary contact.}
 A compulsory region may belong to a closed square without lying strictly
@@ -865,29 +955,200 @@ without assuming that feasible packings can be perturbed generically.
 
 \paragraph{Trust model.}
 This is an ordinary mathematical proof with computer-assisted finite
-steps. It trusts the displayed geometric and analytic arguments, the cited
-nonavoidance lemmas, the reviewed checker implementations and the CPython
+steps. It trusts the displayed geometric and analytic arguments, including
+the direct nonavoidance proofs, the reviewed checker implementations and the CPython
 runtime's exact integer and rational arithmetic. Accepted trigonometric
 and algebraic comparisons use certified rational bounds. Numerical search
 may propose a certificate; the replay checks its deductions afresh.
 Hashes bind files and dependency identities, not geometric truth, and a
 saved success flag is never a substitute for a required replay.
 
-\paragraph{Formalization interface.}
-The active closed-halfplane cover-tree theorems in the inspected Lean
-repository \cite{formalized} give a useful future interface: split a closed
-domain, retain a certified subdomain, or exclude it by checked inequalities,
-while preserving points and segments. That development was inspected,
-not rebuilt here. The present journals, variable side length, corner
-replacements and virtual supports have not been translated into those
-Lean theorems. The proof reported here uses the displayed polygon-cover
-soundness argument instead.
-
 \clearpage
 \appendix
 
 
-% New appendix fragment: root owns integration. No global replay is asserted here.
+\section{Direct nonavoidance rules}\label{app:nonavoidance}
+The first two rules correspond to Stromquist's Lemmas~1 and~2
+\cite[ p.~2]{stromquist}. The triangle proof below also treats the boundary
+and gives a finite-set generalization. The third rule is a directly proved variant of Lemma~4: it assumes
+$b\ge1/2$ but permits every width $0<w<1$, whereas the published
+lemma assumes $2\sqrt2-2<w<1$. Complete proofs are included, so the applications
+depend on the stated hypotheses rather than an unchecked external theorem.
+
+\subsection{Rectangle and triangle rules}
+\paragraph{Rectangle rule, with all boundaries included.}
+Let $0<A,B\le1$. An open square of side $\lambda>1$ centered at
+$(X,Y)\in[0,A]\times[0,B]$ either meets a coordinate axis or contains
+$P=(A,B)$. Suppose it avoids both axes. Choose edge axes
+$u=(c,s),v=(-s,c)$ with $c,s\ge0$, $c^2+s^2=1$, and put $\rho=c+s$.
+Avoidance of both axes implies $X,Y\ge\lambda\rho/2$. Thus the
+coordinates of $d=P-(X,Y)$ are nonnegative and at most
+$M=1-\lambda\rho/2$. In a feasible instance $M\ge0$, and both edge
+projections satisfy
+\[
+ |u\cdot d|,\ |v\cdot d|\le\rho M<\lambda/2.
+\]
+Indeed, the strict inequality is equivalent to
+$2\rho<\lambda(\rho^2+1)$, which follows from
+$\rho^2+1\ge2\rho>0$ and $\lambda>1$. Therefore $P$ belongs to the
+open square, even if the square touches an axis or its center lies on
+an edge of the center rectangle.
+
+\paragraph{Triangle rule, including edges and vertices.}
+Let a triangle have all side lengths at most one. An open square of
+side $\lambda>1$ whose center lies in the \emph{closed} triangle
+contains one of its vertices. In fact, the statement holds with a finite
+set $V$ of diameter at most one in place of the three vertices and its
+convex hull in place of the triangle.
+Translate the square's center to zero and use its edge coordinates.
+Suppose every point of $V$ avoids its open interior. Every point then
+satisfies one of $x\ge\lambda/2$, $x\le-\lambda/2$,
+$y\ge\lambda/2$, $y\le-\lambda/2$. Both opposite inequalities in either
+coordinate cannot occur at different points, as they would give a pair
+at distance at least $\lambda>1$. Reflecting coordinates if necessary,
+all violations are therefore of types $x\ge\lambda/2$ and
+$y\ge\lambda/2$.
+If only one type occurs, that coordinate is strictly positive throughout
+$V$, excluding zero from its convex hull. If both types occur, the
+pairwise-distance bound forces every point to satisfy
+$x> -\lambda/2$ and $y> -\lambda/2$. Each point thus satisfies $x+y>0$,
+again excluding zero from the convex hull. This contradiction proves the
+open-ownership conclusion without any separate center-edge argument.
+
+\subsection{The wall-quadrilateral rule}
+Let $0<w<1$, $1/2\le b<1$, and
+\[
+ w^2+(1-b)^2\le1.
+\]
+Suppose that for every $0<\theta<\pi/2$,
+\begin{equation}\label{eq:independent-wall-hypothesis}
+ b\le \frac{\cos\theta}{1+\cos\theta}
+       +\frac{1-w\cos\theta}{\sin\theta}.
+\end{equation}
+Write
+\[
+ P=(0,1),\qquad R=(w,b),\qquad
+ D=\operatorname{conv}\{(0,0),(w,0),R,P\}.
+\]
+Then the open interior of every square of side $\lambda>1$ whose center
+lies in the closed quadrilateral $D$ meets the $x$-axis or contains $P$ or
+$R$. This is a directly proved variant of Stromquist\textup{~\cite[Lemma~4, pp.~3--4]{stromquist}} in the range $b\ge1/2$; its wider width range is justified by the proof below. Its scalar hypothesis is stated for every angle, so no assertion about the location or uniqueness of a minimum is required.
+
+\paragraph{Coordinates and boundary convention.}
+Suppose, for a contradiction, that the square's open interior avoids all
+three targets. Let its center be $Z=(X,Y)$. Choose its orthonormal edge
+axes as
+\[
+ u=(c,s),\qquad v=(-s,c),\qquad c,s\ge0,\quad c^2+s^2=1,
+\]
+and put $\rho=c+s$. Such a choice covers every square orientation modulo
+$\pi/2$. The center hypotheses give
+\[
+ 0\le X\le w,\qquad 0\le Y\le1-(1-b)X/w\le1.
+\]
+The square's vertical half-width is $\lambda\rho/2$. Since it avoids the
+$x$-axis and its center is above it,
+\begin{equation}\label{eq:wall-bottom}
+ Y\ge\lambda\rho/2.
+\end{equation}
+Equality, corresponding to a vertex or edge on the wall, is allowed.
+Put $U=u\cdot Z$, $V=v\cdot Z$, and let the edge coordinates of the two
+markers relative to $Z$ be
+\[
+ p=u\cdot(P-Z)=s-U,\quad q=v\cdot(P-Z)=c-V,
+\]
+\[
+ r=u\cdot(R-Z)=cw+sb-U,\quad t=v\cdot(R-Z)=-sw+cb-V.
+\]
+Avoidance of an \emph{open} square means at least one coordinate has
+absolute value at least $\lambda/2$. No strict outside assumption is made.
+
+\paragraph{Only four face combinations remain.}
+First, $q=c(1-Y)+sX\ge0$, whereas
+\[
+ p=s(1-Y)-cX\le s(1-\lambda\rho/2)<\lambda/2.
+\]
+The strict inequality follows from
+$1+s\rho-2s=(1-s)^2+sc\ge0$ and $\lambda>1$.
+Consequently the first marker can be avoided only through
+\[
+ \text{(A)}\ p\le-\lambda/2,
+ \qquad\hbox{or}\qquad
+ \text{(B)}\ q\ge\lambda/2.
+\]
+For the second marker,
+\[
+ r=c(w-X)+s(b-Y)\ge-s(1-b)\ge-1/2>-\lambda/2,
+\]
+using $b\ge1/2$, and
+\[
+ t=-s(w-X)+c(b-Y)\le c(1-\lambda\rho/2)<\lambda/2.
+\]
+Here $1+c\rho-2c=(1-c)^2+cs\ge0$ gives the final inequality.
+Thus its only avoidance possibilities are
+\[
+ \text{(C)}\ r\ge\lambda/2,
+ \qquad\hbox{or}\qquad
+ \text{(D)}\ t\le-\lambda/2.
+\]
+If a marker violates two faces, choose either one; the four combinations
+below exhaust all possibilities, including marker-on-boundary cases.
+
+\paragraph{Three combinations are impossible.}
+Set $\delta=1-b$ and
+\[
+ d=u\cdot(R-P)=cw-s\delta,
+ \qquad E=-v\cdot(R-P)=sw+c\delta>0.
+\]
+Then $r=p+d$, $t=q-E$, and
+\begin{equation}\label{eq:wall-short-top}
+ d^2+E^2=w^2+\delta^2\le1<\lambda^2.
+\end{equation}
+Combination (A),(C) gives $d=r-p\ge\lambda$, contradicting
+\eqref{eq:wall-short-top}. Combination (B),(D) similarly gives
+$E=q-t\ge\lambda$.
+
+For combination (A),(D), (A) yields $U\ge s+\lambda/2$.
+Since the maximum of $u\cdot Z$ on $D$ is $\max(s,cw+sb)$,
+we get $d\ge\lambda/2>0$. In particular $0<d,E<\lambda$ by
+\eqref{eq:wall-short-top}. The top-edge condition on the center says
+\[
+ (\delta,w)\cdot(P-Z)\ge0.
+\]
+Since $(\delta,w)=E u+d v$, this is $Ep+dq\ge0$.
+But (A),(D) give $p\le-\lambda/2$ and $q\le E-\lambda/2$, so
+\[
+ Ep+dq\le dE-\frac\lambda2(d+E)<0.
+\]
+The last inequality uses $d,E<\lambda$:
+$2dE<\lambda E+\lambda d$. This is a contradiction.
+This step is exactly where the center's position below the sloping edge
+is needed; it cannot be omitted or replaced by a coarse rectangle.
+
+\paragraph{The remaining combination gives the scalar condition.}
+In combination (B),(C),
+\[
+ V\le c-\lambda/2,\qquad U\le cw+sb-\lambda/2.
+\]
+Since $Y=sU+cV$, these inequalities together with
+\eqref{eq:wall-bottom} imply
+\begin{equation}\label{eq:wall-final-inequality}
+ \lambda(c+s)\le c^2+scw+s^2b.
+\end{equation}
+If $s=0$, this is $\lambda\le1$, impossible. If $c=0$, it is
+$\lambda\le b<1$, also impossible. Otherwise $s,c>0$ and
+$\lambda>1$ make \eqref{eq:wall-final-inequality} imply
+\[
+ b>\frac{c+s-c^2-scw}{s^2}
+   =\frac{c}{1+c}+\frac{1-wc}{s},
+\]
+contradicting \eqref{eq:independent-wall-hypothesis}.
+Thus the open square meets the wall or owns an endpoint, as claimed.
+All center boundaries, marker boundaries, wall contacts, and the two
+axis-aligned orientations have been included explicitly.
+
+
+
 \section{Initial compulsory points and corner normalization}
 \label{app:initial-corners}
 Throughout this appendix the container is $[0,S]^2$, with
@@ -925,25 +1186,6 @@ hull. For a wall singleton the four alternatives replacing $W_0$ are
 Their adjacent wall-quadrilateral inequalities and triangulations are
 checked by the same nonavoidance lemmas. Rotate these statements for the
 other inner and wall markers.
-
-Later regenerations also use seven alternatives for a singleton $C_0$:
-\[
-\begin{gathered}
- (489/500,A_-),\quad(981/1000,997/1000),\quad
- (493/500,991/1000),\quad(991/1000,493/500),\\
- (997/1000,981/1000),\quad(A_-,489/500),\quad(A_-,A_-).
-\end{gathered}
-\]
-For an alternative $(x,y)$, the modified corner rectangle has sides
-$x,y\le A_-<a$. Put $m=S/2$ and $b=3/4$.
-The two adjacent wall quadrilaterals use parameters
-$((m-x)/y,b/y)$ and $((m-y)/x,b/x)$ after scaling by $y$ and $x$,
-respectively. In both scalings the physical square has side greater than
-$1$. The finite arithmetic verifies the wall hypotheses, the fourteen
-oriented triangles, their edge lengths and the partition identity.
-Lemma~\ref{lem:moving-marker} then proves strict containment of all seven
-points. These claims concern alternative marker covers, not approximate
-positions of a proposed packing.
 
 \paragraph{The symmetry restrictions used by the journals.}
 Before any propagation, use the following reflection when necessary:
@@ -1099,7 +1341,6 @@ uses the upper-right reflection of Lemma~\ref{lem:corner-support} and the
 separate obstruction exclusions in Appendix~\ref{app:second-corner-separator}.
 
 
-% Integrate only after the fresh root/angle/corner replay queue has completed.
 \paragraph{Angle reduction and the two corner replacements.}
 Write $t_G=\tan(\theta_G/2)$ for the common marker owner's half-angle,
 and $t_{C_2}=\tan(\theta_{C_2}/2)$ for the upper-right corner owner's
@@ -1482,8 +1723,10 @@ their parent. These observations complete the induction.
 \label{hybrid:boundary-instantiation}
 The regenerated covers after each of the two corner normalizations
 establish \eqref{hybrid:relative-neighborhood} for the resulting packing.
-The subsequent center-domain operations preserve it, including all ten
-one-halfplane spatial exclusions, both virtual support cuts, and the final
+The subsequent center-domain operations preserve it, including the five
+retained one-halfplane spatial exclusions, the five strict spatial facts
+supplied by the early geometric and cover arguments, both virtual support
+cuts, and the final
 actual-edge pruning. It uses the ownership, normalization and support
 theorems and the exact acceptance of each finite certificate, supplied by
 the respective parents in the global reduction.
@@ -1542,33 +1785,48 @@ $|z_i-z_j|\le S\sqrt2<6$ and angular bin width at most $2/N$:
 the linear interpolation error is at most $6(2/N)^2/8=3/N^2$.
 
 Each spatial branch imposes just one nontrivial closed halfplane, or the
-identity $0\le1$. Every subsequently reapplied global spatial bound is
-strict because its opposite closed branch has been excluded. Outward
+identity $0\le1$. Every subsequently reapplied spatial bound is strict:
+five follow from excluded closed contrary branches, while the other five
+follow from the corridor proof or the positive-margin extrema in
+Proposition~\ref{input:global}. Outward
 rounding uses $(\lceil D b\rceil+1)/D>b$ for each support maximum $b$;
 the enclosing box $[-8,8]^2$ contains actual midpoint-frame centers
 strictly. Angle refinement preserves these properties.
 
-For either virtual support inequality, replacing $a$ by $A_-$ makes
-the necessary inequality strict. More explicitly, the two functions
-whose endpoint upper bound is $1/(2N^2)$ are
+For either virtual support, put $(m,n)=(2,1)$ for $G$ and $(1,2)$ for
+$I_2$. Its actual first-quadrant normal satisfies
 \[
- f_{\rm col}(\theta)=
- \sin\theta(X-S+A_-)-\cos\theta(Y-2A_-)+A_-/2,
-\qquad
- f_{\rm row}(\theta)=
- \sin\theta(X-S+2A_-)-\cos\theta(Y-A_-)+A_-/2.
+ (-\sin\theta,\cos\theta)\cdot(C-(S-ma,na))\ge a/2.
 \]
-At the actual angle their values are at most, respectively,
-$-(a-A_-)(\sin\theta+2\cos\theta+1/2)$ and
-$-(a-A_-)(2\sin\theta+\cos\theta+1/2)$, and hence are negative.
-The certified coordinate bounds give $|f''|<1$, so the linear
-interpolant of the endpoint values is strictly below $1/(2N^2)$ at
-the actual angle. At least one endpoint value is therefore strictly
-below this bound. Thus the actual center is strictly in at least one
-of the two endpoint halfplanes. The algorithm takes their union
-before convexification.
-The column's repeated coarse box
-$[2.4,2.7]\times[2.3,2.6]$ contains the preceding exact source cover with
+Set $z=C-(S-mA_-,nA_-)$. Then
+\[
+ (-\sin\theta,\cos\theta)\cdot z
+ \ge A_-/2+(a-A_-)(1/2+m\sin\theta+n\cos\theta)\ge A_-/2.
+\]
+For a half-angle bin $[k/N,(k+1)/N]$, its angle width $w$ is at most
+$2/N$. An actual normal is a nonnegative combination of the two endpoint
+normals. The sum of the two coefficients is at most $\sec(w/2)$:
+if its distances from the endpoints are $\delta$ and $w-\delta$, this sum
+is $[\sin\delta+\sin(w-\delta)]/\sin w\le\sec(w/2)$.
+At least one endpoint projection is therefore at least
+\[
+ (A_-/2)\cos(w/2)\ge A_-/2-A_-/(4N^2)
+       >A_-/2-1/(2N^2),
+\]
+where $A_-<2$. Thus the union of the endpoint halfplanes
+\[
+ s_jX-c_jY\le s_j(S-mA_-)-nA_-c_j-A_-/2+1/(2N^2),
+ \qquad j=k,k+1,
+\]
+contains an ordinary neighborhood of the actual center, even when the
+support inequality is equality. Here $(c_j,s_j)$ is the exact rational
+direction at half-angle $j/N$. Taking the convex hull of this union is
+safe; intersecting the two halfplanes is not the rule being used.
+This argument covers the early and the later support cuts without any
+small-center-box assumption.
+
+The unchanged later journals also use the column box
+$[2.4,2.7]\times[2.3,2.6]$, which contains the preceding exact source cover with
 positive margins on all four sides. The bottom-row coarse box
 $[1.90,1.94]\times[1.67,1.705]$ consists of four independently proved
 strict spatial inequalities. In particular the relaxed source cover
@@ -1581,14 +1839,10 @@ legal packing and no generic-position hypothesis are asserted.
 \end{proof}
 
 \paragraph{Finite checks and replay scope.}
-The static boundary audit of the full inherited-source graph records
-$145$ nodes, $91$ occurrences of a spatial branch and $11$ distinct cuts:
-the identity and the ten single halfplanes. Its $36$ cumulative
-spatial-bound records are strict, and its $33$ journal rounding
-denominators are positive. The smallest of the four freshly checked
-column-box margins exceeds $0.048$. These are finite interfaces for the
-boundary argument. The selected proof uses a different, $119$-node
-acceptance graph, whose required geometric transitions are separately
+The boundary checks verify the strict spatial bounds and positive rounding
+denominators used above. The smallest of the four freshly checked
+column-box margins exceeds $0.048$. The selected proof uses the
+$103$-node acceptance graph, whose required geometric transitions are
 replayed from accepted parents. Historical hashed inputs remain immutable.
 
 
@@ -1674,78 +1928,6 @@ and envelope validity are supplied by Proposition~\ref{input:global};
 this checker verifies their finite interface with the analytic endpoint.
 No local rigidity certificate, inverse-matrix estimate or assumption of
 equal tilt angles is used in the mixed support theorem.
-
-
-\section{Stability and equality of the six-square block}\label{app:block-equality}
-\begin{corollary}[Stability and equality for the six-square block]
-\label{cor:mixed-block-rigidity}
-Under the hypotheses of Theorem~\ref{thm:mixed-support}, put
-$t=\tan(\theta_C/2)$. Then
-\begin{equation}
-\begin{aligned}
- L-\Psi(t)\ge{}&\frac9{200}|\theta_A-\theta_B|
- +\frac1{200}|\theta_D-\theta_E|+\frac1{100}|\theta_B-\theta_D|\\
- &+\frac1{500}|\theta_C-\theta_D|+\frac7{100}|\phi|.
-\end{aligned}
-\label{eq:mixed-stability}
-\end{equation}
-If $L=T$, the five tilted squares all have angle $2\arctan u$, the
-bridge square has angle zero, and the centers of all six named squares
-are their reference-construction positions.
-This conclusion concerns only the six-square block in the stated frame
-and envelope.
-\end{corollary}
-
-\begin{proof}
-The certified bounds permit mismatch coefficients and derivative bounds
-\[
- (\beta_{AB},\beta_{DE},\beta_{BD},\beta_{CD})
- =\left(\frac1{10},\frac1{20},\frac7{100},\frac1{10}\right),
- \qquad
- (\gamma_{AB},\gamma_{DE},\gamma_{BD},\gamma_{CD})
- =\left(\frac{11}{200},\frac9{200},\frac3{50},\frac{49}{500}\right).
-\]
-The bridge bracket exceeds $3/20$. Since $|\phi|\le21/1000$,
-\[
- \mathcal S(\boldsymbol\theta;0)-\mathcal S(\boldsymbol\theta;\phi)
- \ge\frac3{40}\sin|\phi|
- \ge\frac3{40}\left(1-\frac{(21/1000)^2}{6}\right)|\phi|
- \ge\frac7{100}|\phi|.
-\]
-Along the four comparison paths, the total possible decrease in
-$\mathcal S$ is at most
-$\sum_e\gamma_e|\theta_p-\theta_q|$, with the differences taken at
-the original angles. The original value of $\mathcal S$ is at least
-$\sum_e\beta_e|\theta_p-\theta_q|$. Subtracting these bounds and
-using the aligned identity $\mathcal S=L-\Psi(t)$ proves
-\eqref{eq:mixed-stability}.
-
-If $L=T$, strict convexity of $\Psi$, its unique minimum at $u$, and
-\eqref{eq:mixed-stability} give $t=u$, $\phi=0$, and equality of all
-five tilted angles. Every one of the fourteen gaps is now nonnegative,
-every weight is positive, and their weighted sum equals
-$L-\Psi(u)=0$. Consequently all fourteen gaps vanish.
-
-Write $c=\cos(2\arctan u)$, $s=\sin(2\arctan u)$,
-$w=c+s$, $U_Z=(c,s)\cdot Z$, and $V_Z=(-s,c)\cdot Z$.
-The following twelve zero-gap equations determine the centers in order:
-\[
-\begin{array}{c|ll}
- A&U_A=w+1/2&V_A=c(T-2)-s-1/2\\
- B&V_B=V_A-1&B_y=w/2\\
- C&U_C=U_A+1&V_C=c(T-1)-2s-1/2\\
- D&U_D=U_B+1&V_D=-s(T-1)+c+1/2\\
- E&U_E=U_D+1&E_x=T-w/2\\
- F&V_F=V_E+(1+w)/2&F_y=T-1/2.
-\end{array}
-\]
-The coefficient determinants are $1$ for $A,C,D$ and $-s\ne0$
-for $B,E,F$. Hence each center is uniquely determined after the previous
-ones. The exact reference-construction formulas satisfy these equations;
-indeed, substitution and polynomial reduction modulo $p(u)$ make all
-fourteen gaps identically zero. This last finite identity check is
-recorded in \path{quick/results/block-equalities.json}.
-\end{proof}
 
 
 \section{A common point below a supporting line}\label{app:strip-proof}
@@ -1853,181 +2035,104 @@ Every displayed summand is nonnegative on its stated interval, and the
 first summand is positive. The remaining factors have the required
 signs, so $B\le1/2$. This proves the claim.
 
-Finally, suppose both original squares had support strictly less than
-$2r+1$. Because $3/2<1+\alpha$, both belong to $T$ with a strict cap
-inequality. For $c,s>0$, the two wall inequalities are strict; the
-substitutions for $A$ and $B$ use the strict cap with positive
-coefficients $c/r$ and $s/r$. Hence $p$ is interior to every rotated
-square. For an axis-aligned square, its bottom edge is at most $1/2$
-and its top edge is at least $1$, so $p$ is strictly between them.
-Its left edge is strictly less than $1$, because the strict cap says
-$r(\text{left}+1)+(\text{bottom}+1)<2r+1$.
-Its right edge is at least $1$. Thus $p+\varepsilon(-1,0)$ is interior
-for all sufficiently small $\varepsilon>0$. The same small perturbation
-works simultaneously for the two squares, a contradiction.
+Finally, suppose both squares had support strictly less than $2r+1$.
+Since $H\le1+\alpha$, both lie in $T$ with a strict cap inequality.
+For $c,s>0$, the two wall inequalities above are strict; the substitutions
+for $A$ and $B$ use the strict cap with positive coefficients $c/r,s/r$.
+Hence $p$ is interior to every genuinely rotated square. For an
+axis-aligned square, its bottom is at most $H-1\le\alpha$ and its top
+is at least $1>\alpha$. Its left edge is strictly less than $1$, since
+the strict cap gives
+$r(\mathrm{left}+1)+(\mathrm{bottom}+1)<2r+1$;
+its right edge is at least $1$. Therefore
+$p+\varepsilon(-1,1)$ is interior for all sufficiently small
+$\varepsilon>0$, even when the bottom equals $\alpha$.
+The same small perturbation works for both squares, contradicting their
+disjoint interiors. Finally $\alpha>1/2$ gives the height-$3/2$ corollary.
 \end{proof}
 
-% Appendix fragment. Requires amsmath, amssymb, amsthm, theorem and lemma.
-% Refers to the existing strip theorem labelled thm:strip.
-\section{Compact separator arguments}
-\label{app:compact-separators}
-The following arguments replace two families of separating-axis checks by
-small geometric envelopes. Their inputs are the archived pose covers
-specified below, with their stated branch conditions. The accepted global
-reduction establishes those covers; the companion then extracts the smaller
-rational interfaces used here. All terminating decimals in this appendix
-are exact rationals.
-Throughout, $S=3.88$ and $1<a<1.001$; the source side interval is narrower.
+\section{Separator arguments}\label{app:compact-separators}
+All terminating decimals in this appendix denote exact rationals.
+The two applications below use different pose covers; each cover's
+ancestry is retained in the global reduction.
 
-\begin{lemma}[A wider strip in a fixed direction]
-\label{lem:direction-strip}
-Fix $r>0$, and put
+\subsection{A virtual column after the first early-row round}\label{app:early-column}
+\begin{proposition}[A column after one early-row round]\label{lem:row-state-column}
+Assume the one-round state is a valid outer cover of a canonical case-6
+packing, with common side $a\in[A_-,A_+]$. Put $R=I_2$ and
 \[
- \alpha(r)=\frac{r+1}{\sqrt{1+r^2}+1}.
+ E=[S-a,S]\times[0,2a],\qquad S=3.88.
 \]
-If two unit squares with disjoint interiors lie in
-$\{x\ge0,\ 0\le y\le H\}$, where $H\le1+\alpha(r)$, then their union has
-support at least $2r+1$ in direction $(r,1)$.
-\end{lemma}
+Then, for the northwest edge normal $n_R=(-s,c)$ of $R$,
+\[
+ \ell_R(n_R)\ge h_E(n_R)=-sS+a(s+2c).
+\]
+\end{proposition}
 \begin{proof}
-The forced-point calculation in the proof of Theorem~\ref{thm:strip}
-applies to every square in
-$\{x,y\ge0,\ y\le1+\alpha,\ rx+y\le2r+1\}$ and gives the common point
-$p=(1,\alpha)$. If the cap inequality is strict, $p$ is interior to every
-genuinely rotated square. For an axis-aligned square, its bottom is at most
-$H-1\le\alpha$, its top is at least $1>\alpha$, and its left and right edges
-satisfy $\mathrm{left}<1\le\mathrm{right}$. Thus
-$p+\varepsilon(-1,1)$ is interior for every sufficiently small
-$\varepsilon>0$. A common such perturbation for two squares is impossible.
+The exact state enclosure puts the centers of both $C_1$ and $W_1$
+in $x\ge3.09$. A square's circumradius is $a/\sqrt2<.71a$.
+Since $a\ge A_->1$ and $3.09+.79=3.88$, the whole of each square
+therefore lies in the strip
+\[
+ S-3a/2<x\le S,\qquad y\ge0.
+\]
+The two-square strip-support theorem applies to these full squares.
+In coordinates $(U,V)=(y,S-x)$, its direction parameter is $r=c/s>0$;
+scaling its inequality by $as$ gives
+\[
+ h_E(n_R)\le\max\{h_{C_1}(n_R),h_{W_1}(n_R)\}.
+\]
+Only the original strip width $3a/2$ is needed here.
+
+Suppose first that $R$ and $E$ meet in their interiors.
+The conditioned outer cover then contains their actual center and angle:
+the checker intersects each $R$ center polygon with the Minkowski sum
+of $[S-A_+,S]\times[0,2A_+]$ and its midpoint-oriented enclosing square.
+All nonempty closed intersections, including segments and points, are
+retained. Pairwise consistency pruning preserves every actual triple
+$(C_1,W_1,R)$.
+
+On this conditional cover, the exact endpoint support checks exclude
+all seven unwanted signed separating-edge alternatives for $R,W_1$.
+Thus their disjoint interiors force
+$h_{W_1}(n_R)\le\ell_R(n_R)$.
+A separate, strict center-support check gives
+$h_{C_1}(n_R)<\ell_R(n_R)$.
+The strip inequality now implies $h_E(n_R)\le\ell_R(n_R)$,
+contradicting the assumed interior intersection. Hence $R$ and $E$
+have disjoint interiors.
+
+To turn this disjointness into the stated specific normal inequality,
+use the corner $p=(S-a,2a)$ of $E$.
+The exact center enclosure, uniformly over $a\in[A_-,A_+]$, gives
+\[
+ z=p-C_R\in(0,.449)\times(-.492,0).
+\]
+Every retained angle of $R$ is strictly in the first quadrant, so
+for $e_R=(c,s)$ we have
+\[
+ -.492<e_R\cdot z<.449,
+ \qquad n_R\cdot z<0.
+\]
+In particular $|e_R\cdot z|<a/2$.
+The point $p$ cannot be in the interior of $R$: otherwise a small
+neighborhood of that corner inside $E$ would meet the interior of $R$.
+Since $p$ is strictly in $R$'s $e_R$ strip and lies below its normal
+center, it follows that $n_R\cdot z\le-a/2$.
+Consequently $h_E(n_R)=n_R\cdot p\le\ell_R(n_R)$, as required.
 \end{proof}
 
-\begin{lemma}[Two normals control their cone]
-\label{lem:two-normal-cone}
-Let $n_0,n_1$ be unit vectors spanning an angle less than $\pi$. If
-$n_j\cdot z\ge d\ge0$ for $j=0,1$, then $n\cdot z\ge d$ for every unit
-vector $n$ in their positive cone.
-\end{lemma}
-\begin{proof}
-Every such $n$ is a normalized convex combination of $n_0,n_1$.
-Its unnormalized scalar product with $z$ is at least $d$, and the
-normalizing denominator is at most one.
-\end{proof}
-
-\subsection{A virtual column before the eighth spatial bound}
-\label{app:early-column}
-Let $P=C_1$, $Q=W_1$, and $R=I_2$. The required source is
-\path{seven-spatial-bounds-certified-seed.json}. Its spatial premise is
-\path{spatial-bounds-v4-verification.json}; in particular it precedes the
-additional bound $x_{C_1}>3.1$. It supplies the following global envelope,
-without conditioning on intersection with a proposed column:
-\[
-\begin{array}{c|cc}
- &x\text{-coordinate of centre}&y\text{-coordinate of centre}\\ \hline
- R &[2.49,2.63]&[2.34,2.495]\\
- Q &[3.23,3.38]&[1.485,1.62]
-\end{array}
-\]
-Writing $\theta$ for the angle of $R$, and $\phi$ for the angle of $Q$
-modulo a right angle, with small negative angles allowed, the envelope gives
-\[
- \theta_0=2\arctan\tfrac14\le\theta\le2\arctan\tfrac12=\theta_1,
- \qquad -\beta=-2\arctan\tfrac2{11}\le\phi\le2\arctan\tfrac1{16}=\gamma.
-\]
-Both complete squares $P,Q$ lie in $x\ge S-7a/4$. Two further support bounds
-complete the data needed here:
-\begin{equation}\label{eq:compact-column-supports}
-\begin{array}{c|cc}
- n& n\cdot C_R\text{ is at least}&h_P(n)\text{ is at most}\\ \hline
- (-8/17,15/17)&0.876&-0.032\\
- (-4/5,3/5)&-0.648&-1.153
-\end{array}
-\end{equation}
-The rightmost column bounds the whole square $P$. The smaller difference
-between the last two columns is $0.505>a/2$. Applying
-Lemma~\ref{lem:two-normal-cone} to every vector $C_R-p$, $p\in P$, gives
-\begin{equation}\label{eq:compact-P-separation}
- h_P(\nu_R)<\ell_R(\nu_R),\qquad
- \nu_R=(-\sin\theta,\cos\theta).
-\end{equation}
-
-We next show that nonoverlap of $Q,R$ forces separation along the same
-normal. Put $C_R-C_Q=(-X,Y)$. The rectangles imply
-\[
- 0.60\le X\le0.89,\qquad 0.72\le Y\le1.01.
-\]
-For equal side-$a$ squares, the sum of their projection radii along any
-edge normal of either square is
-\[
- \rho=\frac a2\{1+\cos(\theta-\phi)+\sin(\theta-\phi)\}.
-\]
-The relative-angle interval lies in $(0,\pi/2)$. On this interval
-$\cos+\sin$ is concave, so its minimum occurs at an endpoint. At
-$\theta_1+\beta$ its value is $31/25$, since the cosine and sine there are
-$7/25$ and $24/25$; at $\theta_0-\gamma$ its value is larger. Hence
-\begin{equation}\label{eq:compact-radius}
- \rho>28/25=1.12.
-\end{equation}
-The projection along $R$'s other edge normal has absolute value
-$|-X\cos\theta+Y\sin\theta|\le1.01$. The projection along $-\nu_R$ is
-negative. These directions cannot separate.
-
-For $Q$, use $e_Q=(\cos\phi,\sin\phi)$ and
-$\nu_Q=(-\sin\phi,\cos\phi)$. If $\phi\ge0$, its $e_Q$ projection has
-absolute value at most $0.89$, while its $\nu_Q$ projection is at most
-\[
- 0.89\sin\gamma+1.01\cos\gamma<1.113<1.12.
-\]
-The expression is increasing up to $\gamma$, because
-$0.89\cos\gamma-1.01\sin\gamma>0$.
-If $\phi=-u\le0$, its $\nu_Q$ projection has absolute value at most $1.01$.
-For the other direction, the right container wall gives
-\[
- x_Q\le S-\frac a2(\cos u+\sin u),
-\]
-and therefore
-\[
- X\cos u+Y\sin u\le
- F(u):=1.39\cos u+1.01\sin u-\tfrac12\cos u(\cos u+\sin u).
-\]
-Set $C=\cos\beta=117/125$ and $T=\sin\beta=44/125$. On $[0,\beta]$,
-$\cos(2u)\le\cos u$, so differentiation gives
-\[
- F'(u)\ge C(1.01-\tfrac12)-T(1.39-C)=0.317552>0.
-\]
-Consequently $F(u)\le F(\beta)=1.053776<1.12$. Neither edge normal of $Q$
-can separate. The separating-axis theorem now forces
-\begin{equation}\label{eq:compact-Q-separation}
- h_Q(\nu_R)\le\ell_R(\nu_R).
-\end{equation}
-
-In coordinates $U=y$, $V=S-x$, the pair $P,Q$ lies in a strip of width
-$7a/4$, and $\nu_R$ corresponds to weights $(\cos\theta,\sin\theta)$.
-Thus $r=\cot\theta\ge3/4$. Since $\alpha$ is increasing,
-\[
- 1+\alpha(r)\ge1+\alpha(3/4)=16/9>7/4.
-\]
-Lemma~\ref{lem:direction-strip}, scaled by $a$, combines with
-\eqref{eq:compact-P-separation}--\eqref{eq:compact-Q-separation} to give
-\[
- h_E(\nu_R)\le\max\{h_P(\nu_R),h_Q(\nu_R)\}\le\ell_R(\nu_R),
- \qquad E=[S-a,S]\times[0,2a].
-\]
-This proves the virtual column from the seven-bound envelope.
-
-Even the final corner constraint follows directly from the same rectangle.
-For $p=(S-a,2a)$,
-\[
- 0.249<p_x-x_R<0.390,\qquad -0.495<p_y-y_R<-0.338.
-\]
-The components have opposite signs, so
-$|e_R\cdot(p-C_R)|<0.495<a/2$ and $\nu_R\cdot(p-C_R)<0$.
-The corner $p$ cannot be interior to $R$, since every neighbourhood of $p$
-meets the interior of $E$. It therefore lies below $R$'s lower $\nu_R$ edge,
-yielding
-\[
- -\sin\theta\,x_R+\cos\theta\,y_R
- \ge-\sin\theta\,S+a(\sin\theta+2\cos\theta+\tfrac12).
-\]
+\paragraph{The finite interface.}
+The exact enclosure and separating-axis certificate check the full-square
+strip, the corner enclosure, $1533$ unwanted-axis instances and $920$
+$C_1$ support instances on this literal one-round state. The center
+projection interpolation allowance is $3/96^2$, and the radius sum is
+bounded by $A_+(1+\sqrt2)/2<A_+\,169/140$. All nonempty conditioned
+closed faces are retained. The supporting kernels and this state are
+bound by the certificate manifest. Its parent is the first row-only
+round in Proposition~\ref{input:global}, not a later seven-bound cover.
+The interface estimates hold at closed side endpoints; its propagation
+parent uses $A_-<a<A_+$ and the neighborhood invariant.
 
 \subsection{A short separator proof for the second corner}
 \label{app:second-corner-separator}
@@ -2088,12 +2193,9 @@ $[S-a,S]^2$.
 
 This proves the $I_2$ separator step from its stated cover. The $W_2$
 obstruction exclusion and the ancestry of both covers are separate
-accepted parents of the second replacement, joined below. Likewise, the
-compact virtual-column proof removes $x_{C_1}>3.1$ from that obstacle's
-premises; it does not remove the bound from other steps that still use it.
+accepted parents of the second replacement, joined below.
 
 
-% Insert after the compact second-corner separator argument.
 \paragraph{Completing the second corner replacement.}
 The preceding separator argument is the geometric part of the following
 complete interface. Suppose the $C_3$ owner is already
@@ -2157,165 +2259,669 @@ packing and reapply the globally valid compulsory-hull deductions; no
 neighborhood or center bound is transported through the replacement.
 
 
-% Appendix fragment; uses amsmath, amssymb, amsthm and \path.
-% Requires the existing strip theorem labelled thm:strip.
-\section{A virtual bottom row from the earlier cover}
-\label{app:early-bottom-row}
-This argument uses the archived pose cover
-\path{virtual-column-global-N192-certified-seed.json}.
-It precedes the ninth and tenth spatial bounds and the refinement to
-$N=384$. The exact companion verifies the small interface below against
-that cover. Its global validity is supplied by the accepted ancestry in
-Proposition~\ref{input:global}; the extraction check alone does not prove
-that ancestry.
-Every terminating decimal denotes an exact rational number.
+\section{An early corridor from a wall and a slanted roof}\label{app:early-corridor}
+Squares have side $a$ and disjoint interiors in $[0,97/25]^2$, where
+$4003/4000<a<25019/25000$. Every terminating decimal denotes an exact
+rational number. A compulsory point belongs to its named closed square;
+a point owned by a different square is outside its open interior.
+For a convex body $K$ and unit vector $v$, write
+$h_K(v)=\max_{x\in K}v\cdot x$ and
+$\ell_K(v)=\min_{x\in K}v\cdot x$.
 
-Put $S=3.88$, $a_-=4003/4000$, and $a_+=25019/25000$.
-For a compact set $A$, write $h_A(v)=\max_{p\in A}v\cdot p$ and
-$\ell_A(v)=\min_{p\in A}v\cdot p$.
+The geometric arguments below use the original seven-round compulsory
+hulls for the surviving ownership case, together with the common-owner
+angle restriction and the center boxes displayed below. The point
+memberships are checked against the literal hulls. The center boxes are
+obtained from an exact outer cover with 96 angular intervals; they hold
+for the entire intervals and all retained center regions.
+These are explicit computational premises. The deductions from them below
+are direct geometric arguments with exact rational estimates.
 
-\begin{lemma}[Compact bottom-row interface]
-\label{lem:compact-bottom-row}
-Let $P,Q,R$ be side-$a$ squares in $[0,S]^2$ with pairwise disjoint
-interiors, where $a_-\le a\le a_+$. Let their centres be $C_P,C_Q,C_R$.
-Write
+\subsection{The elementary separation criterion}
+For completeness, the signed-axis criterion used above follows directly
+from convex polygons. The difference $G-Q$ is the Minkowski sum of the
+four line segments generating the two squares. Its polygonal edges are
+parallel to edges of one of the squares. If the square interiors are
+disjoint, the origin is outside the interior of this polygon, so one of
+its edge inequalities separates the origin weakly from its interior.
+Its normal is an edge normal of one of the two squares. Equivalently,
+one signed axis satisfies $h_Q(v)\le\ell_G(v)$. Excluding all those
+inequalities therefore proves interior overlap.
+
+\subsection{A roof from foreign compulsory points}
+\begin{lemma}[A three-point roof above the common owner]\label{lem:root-roof}
+Let $G$ have side $a\in(A_-,A_+)$, where
+$A_-=4003/4000$ and $A_+=25019/25000$, and edge directions
+$e=(c,s)$, $n=(-s,c)$ with
+$2\arctan(5/16)\le\theta\le\pi/4$.
+Suppose $G$ contains
 \[
- e_\theta=(\cos\theta,\sin\theta),\qquad
- n_\theta=(-\sin\theta,\cos\theta)
+ I_0=(1.59,1.59),\quad I_1=(2.29,1.59),\quad P=(1.28,1.715),
 \]
-for the edge directions of $R$, and let $\phi$ be the angle of $Q$ modulo
-a right angle, with small negative angles allowed. Assume
-\begin{gather*}
- C_R\in[1.880,1.931]\times[1.655,1.703],\qquad
- 2\arctan\tfrac13\le\theta\le2\arctan\tfrac38=\theta_1,\\
- C_Q\in[2.297,2.381]\times[.500,.552],\qquad
- -2\arctan\tfrac3{125}\le\phi\le\gamma=2\arctan\tfrac1{26}.
-\end{gather*}
-Assume that the complete squares $P,Q$ lie below $y=1.08$, while $P$
-lies to the right of $x=2.78$. Finally, with
+and its interior contains none of
 \[
- b=C_R-\frac a2(e_\theta+n_\theta),\qquad
- b_*=(1.844,.9968),\qquad e_1=(55,48)/73,
+ q=(2.17,2.18),\quad r_1=(1.529,2.043),\quad r_2=(1.7,2.17).
 \]
-assume the three support bounds
-\begin{equation}\label{eq:bottom-row-interface}
- b_y\le.9968,\qquad n_\gamma\cdot b\le n_\gamma\cdot b_*,
- \qquad e_1\cdot C_R\le2.568.
-\end{equation}
-Then $E=[S-2a,S]\times[0,a]$ is interior-disjoint from $R$, and
-\begin{equation}\label{eq:early-bottom-row-inequality}
- -\sin\theta\,X_R+\cos\theta\,Y_R
- \ge-\sin\theta\,S+a(2\sin\theta+\cos\theta+\tfrac12).
-\end{equation}
+Then its bottom vertex $b=C_G-a(e+n)/2$ satisfies $b_y<.999$.
+More precisely, simultaneously for $j=1,2$,
+\[
+ e\cdot b\le e\cdot q-a,\qquad n\cdot b\le n\cdot r_j-a.
+\]
 \end{lemma}
-
 \begin{proof}
-Write $C_R-C_Q=(-X,Y)$. The boxes give
-\[
- .366\le X\le.501,\qquad 1.103\le Y\le1.203.
-\]
-The sum of two squares' projection radii in any unit direction is at
-least $a>1$. Along either sign of $e_\theta$, the absolute centre
-projection is at most
-$\max(.501,1.203\sin\theta_1)<1$. For $Q$'s edge direction the same
-bound holds with $\gamma$ in place of $\theta_1$ when $\phi\ge0$;
-when $\phi\le0$, the bound is
-$ .501+1.203\sin(2\arctan(3/125))<1$.
-Neither edge direction therefore separates $Q$ from $R$.
-The projections in their north-west normal directions are positive,
-so the negatives of those normals cannot separate them either.
+Put $T=\tan\theta\in[160/231,1]$. The projection of $q$ onto
+$n$ lies strictly between those of $I_1$ and $P$:
+$n\cdot(q-I_1)=.12s+.59c>0$ and
+$n\cdot(P-q)=c(.89T-.465)>0$.
+Since $e\cdot(q-I_0)>0$, avoidance of $q$ forces
+$e\cdot C_G+a/2\le e\cdot q$.
+The projections of each $r_j$ onto $e$ lie strictly between those
+of $I_0,I_1$, and $n\cdot(r_j-I_0)>0$.
+For $r_1$ the two nontrivial differences, after division by $c$,
+are $-.061+.453T>0$ and $.761-.453T>0$;
+for $r_2$ they are $.11+.58T>0$ and $.59-.58T>0$.
+Thus $n\cdot C_G+a/2\le n\cdot r_j$.
+This also proves the stated slanted roof inequalities.
 
-We claim that $Q$'s north-west normal $n_\phi$ cannot separate $Q$
-below $R$. Since $0<\theta-\phi<\pi/2$, the lower support of $R$ in
-that direction is attained at its bottom vertex $b$.
-First let $\phi=-u\le0$, and put $C=\cos u$, $T=\sin u$.
-We have $b_x\le X_R<X_Q$ and $b_y<1<a$, whence
+Writing $q=(q_x,q_y)$ and $r=(r_x,r_y)$ gives
 \[
- \ell_R(n_\phi)=n_\phi\cdot b<TX_Q+Ca.
+ b_y\le r_y+(q_y-r_y)s^2+(q_x-r_x)sc-a(c+s).
 \]
-The bottom wall forces $Y_Q\ge a(C+T)/2$, and therefore
+Use $r=r_1$ for $t=\tan(\theta/2)\in[5/16,1/3]$ and
+$r=r_2$ for $t\in[1/3,\sqrt2-1]$.
+After replacing $a$ by $A_-$ and multiplying $.999$ minus the resulting upper bound by $4000(1+t^2)^2$, the two quartics have ascending
+coefficient lists
 \[
- h_Q(n_\phi)\ge TX_Q+\frac a2\{C(C+T)+1\}\ge TX_Q+Ca.
+ (-173,2878,-10544,13134,-8179),\qquad
+ (-681,4246,-9528,11766,-8687).
 \]
-The last inequality is $(1-C)^2+CT\ge0$.
-
-Now let $0\le\phi\le\gamma$. The first two bounds in
-\eqref{eq:bottom-row-interface} imply
-$n_\phi\cdot b\le n_\phi\cdot b_*$, because $n_\phi$ is a positive
-linear combination of $(0,1)$ and $n_\gamma$. Using $X_Q\le2.381$,
-the bottom wall, and $a>1$, gives
-\begin{align*}
- \ell_R(n_\phi)-h_Q(n_\phi)
- &\le .9968\cos\phi+.537\sin\phi\\
- &\quad-\tfrac12\{1+\cos\phi(\cos\phi+\sin\phi)\}.
-\end{align*}
-For $t=\tan(\phi/2)$, multiplication by $(1+t^2)^2$ turns the right
-side into
-\[
- -.0032+.074t+2.074t^3-1.9968t^4
- \le-.0032+\frac{.074}{26}+\frac{2.074}{26^3}
- =-\frac{10363}{43940000}<0.
-\]
-Thus $n_\phi$ does not separate. The separating-axis theorem now forces
-\begin{equation}\label{eq:early-row-common-separator}
- h_Q(n_\theta)\le\ell_R(n_\theta).
-\end{equation}
-
-For every $p\in P$, the coordinate bounds also give
-\[
- n_\theta\cdot(C_R-p)
- \ge\frac35(.849)+\frac{55}{73}(.575)>\frac a2.
-\]
-Hence $h_P(n_\theta)<\ell_R(n_\theta)$.
-Both complete squares lie in $0\le y\le1.08<3a/2$.
-The strip-support theorem (Theorem~\ref{thm:strip}), after scaling and
-the change of coordinates $(U,V)=(S-x,y)$, implies
-\[
- h_E(n_\theta)\le h_{P\cup Q}(n_\theta)\le\ell_R(n_\theta).
-\]
-This separates the interiors of $E$ and $R$.
-
-For the corner inequality, put $p=(S-2a,a)$ and $z=C_R-p$.
-The boxes imply $0<z_x<.053$ and $.654<z_y<.703$.
-Thus $e_\theta\cdot z$ increases throughout the allowed angle interval.
-Since $e_{\theta_1}=e_1$, the final interface bound gives
-\[
- e_\theta\cdot z-\frac a2
- \le2.568-\frac{55}{73}S+\frac{51}{146}a<0.
-\]
-Also $n_\theta\cdot(p-C_R)\le(48/73)(.053)-(55/73)(.654)<0$.
-The point $p$ is therefore strictly inside $R$'s strip parallel to
-$n_\theta$ and lies below its centre in that direction. It cannot belong
-to $R$'s interior, since every neighbourhood of $p$ meets the interior
-of $E$. Consequently $n_\theta\cdot(p-C_R)\le-a/2$, which is exactly
-\eqref{eq:early-bottom-row-inequality}.
+Both are strictly concave: their second derivatives have negative leading
+coefficients and discriminants $-2068909680$ and $-2962099440$.
+The first quartic has endpoint values $1278237/65536$ and $20/81$
+on $[5/16,1/3]$; the second has values $340/81$ and
+$483049/20736$ on $[1/3,5/12]$. Concavity proves positivity throughout.
+The four endpoint values and the two discriminants give a direct rational check.
 \end{proof}
 
-\paragraph{Exact extraction and its global input.}
-For the archived cover, take $P=C_1$ (owner $2$), $Q=W_0$ (owner $5$),
-and $R$ equal to the common owner (owner $0$).
-The companion \path{check_bottom_row_envelope.py} verifies all stated
-enclosures with rational arithmetic. To extract the first two support
-bounds in \eqref{eq:bottom-row-interface}, it preserves each centre
-polygon and considers the eight angle intervals separately.
-If $C=\cos\gamma$ and $T=\sin\gamma$, both
+
+\subsection{A supporting line and the bottom wall}
+Let $Q$ be a square of side $a\ge1$ contained in $y\ge0$, with center
+$(X,Y)$. Let $\theta\in[2\arctan(5/16),\pi/4]$, write
+$c=\cos\theta$, $s=\sin\theta$, and $\nu=(-s,c)$.
+Suppose
 \[
- \cos\theta+\sin\theta,\qquad
- (C-T)\cos\theta+(C+T)\sin\theta
+ h_Q(\nu)\le\nu\cdot p,
+ \qquad p_x\ge19/8,\quad p_y\le29/20.
 \]
-increase for $0\le\theta\le\pi/4$. Subtracting $a_-/2$ times their
-values at a bin's lower endpoint from the corresponding maximum centre
-projection gives valid upper bounds for the entire bin. This needs only
-sixteen support inequalities. Whole-square bounds use the concentric
-reference square with half-side $a_+(1+1/192)/2$; its containment follows
-from $\cos d+|\sin d|\le1+1/192$ for the possible angular mismatch.
+Then $X>43/20$.
 
-The result replaces the bottom-row argument's conditioned signed-axis
-checks and its corner checks. It lowers this lemma's input to the stated
-$N=192$ cover. The accepted global dependency graph establishes that
-cover from the packing hypotheses; its ancestry remains a distinct part
-of the proof.
+\begin{proof}
+Choose the orientation $\phi$ of $Q$ in $[0,\pi/2]$.
+The bottom wall gives $Y\ge a(\cos\phi+\sin\phi)/2$.
+Using the assumed upper support bound therefore yields
+\[
+ X\ge p_x-\frac cs p_y+
+ \frac{a}{2s}\left[
+ c(\cos\phi+\sin\phi)+\cos(\theta-\phi)
+                         +|\sin(\theta-\phi)|\right].
+\]
+The expression in brackets is a positive linear combination of
+$\cos\phi,\sin\phi$ on each of $[0,\theta]$ and
+$[\theta,\pi/2]$. It is concave on each interval, so its minimum
+occurs at $0$, $\theta$, or $\pi/2$. The endpoint values are
+$2c+s$, and the middle value is $1+c^2+cs$; the latter is smaller,
+because the middle value minus an endpoint value is $(1-c)(1-c-s)\le0$.
+Consequently, with $t=\tan(\theta/2)\ge5/16$,
+\[
+ X\ge\frac{19}{8}-\frac{29c}{20s}
+              +\frac{1+c^2+cs}{2s},
+\]
+and substitution of $c=(1-t^2)/(1+t^2)$, $s=2t/(1+t^2)$ gives
+\[
+ \frac{19}{8}-\frac{29c}{20s}+\frac{1+c^2+cs}{2s}
+ -\frac{43}{20}
+ =\frac{t^3(49t-11)+(29t-9)}{40t(1+t^2)}>0.
+\]
+Both terms in the numerator are positive for $t\ge5/16$:
+$49t-11\ge69/16$ and $29t-9\ge1/16$.
+This proves the claim for every orientation of $Q$.
+\end{proof}
 
+
+\subsection{The early corridor argument}
+
+\begin{proposition}[Early corridor]\label{lem:early-corridor}
+The seven-round compulsory hulls, their displayed center consequences,
+and $2\arctan(5/16)\le\theta_G\le\pi/4$ imply
+$X_{W_0}>2.1$ and $X_{C_1}>2.91$.
+\end{proposition}
+The following support argument proves the assertion from these explicit
+finite inputs.
+
+Write $A_-=4003/4000$, $A_+=25019/25000$ and assume
+$A_-<a<A_+$. Put $Q=W_0$ and suppose, for contradiction, that
+$X_Q\le21/10$. The root interface gives
+\[
+ C_G\in[1.69,1.97]\times[1.48,1.71],\qquad
+ C_Q\in[1.48,2.40]\times[.5,.71].
+\]
+Thus $|X_G-X_Q|\le.49$ and $Y_G-Y_Q\ge.77$.
+The strict $e_G$-projection overlap also follows directly from three
+compulsory points. Take $z=(1.989606,.990917)\in Q$,
+$g=(1.873613,1.07226)\in G$, and $I_0=(1.59,1.59)\in G$.
+For $T=\tan\theta_G\in[160/231,1]$,
+\[
+ e_G\cdot(z-g)/c=.115993-.081343T\ge.03465>0,
+\]
+\[
+ e_G\cdot(I_0-z)/c=-.399606+.599083T
+       \ge1772147/115500000>0.
+\]
+Thus $z$ lies strictly inside the $e_G$-projection interval of $G$;
+no angle-cover calculation is needed for this fact.
+
+Let $e=(c,s)$, $n=(-s,c)$ be the edge directions of $G$.
+The previously proved three-point roof uses
+\[
+ q=(2.17,2.18),\quad r_1=(1.529,2.043),\quad r_2=(1.7,2.17).
+\]
+Use $r_1$ when $\tan(\theta_G/2)\le1/3$, and $r_2$ otherwise.
+Define the auxiliary roof intersection
+\[
+ B=(e\cdot q-a)e+(n\cdot r-a)n.
+\]
+The roof lemma says that the bottom vertex $b$ of $G$ satisfies
+$e\cdot b\le e\cdot B$, $n\cdot b\le n\cdot B$, and that
+$B_y<.999$. Consequently, for every $v=\alpha e+\beta n$ with
+$\alpha,\beta\ge0$,
+\begin{equation}\label{eq:roof-support-all}
+ \ell_G(v)=v\cdot b\le v\cdot B.
+\end{equation}
+
+We shall also use
+\begin{equation}\label{eq:roof-x-all}
+ 7/4<B_x\le1.94.
+\end{equation}
+Indeed,
+\[
+ B_x=q_x+(r_x-q_x)s^2+(q_y-r_y)sc-a(c-s).
+\]
+For fixed $a$, its derivative with respect to $\theta_G$ is at least
+$a-(q_x-r_x)>0$, since $q_y\ge r_y$, $c\ge s\ge0$,
+$2sc\le1$ and $c+s\ge1$.
+At $\theta_G=2\arctan(5/16)$, substitution of $a=A_+$ gives
+$B_x>7/4$ for both choices of $r$.
+At $\theta_G=\pi/4$, its values are $1.918$ and $1.94$.
+These prove \eqref{eq:roof-x-all}.
+
+\paragraph{A useful support bound from a low point.}
+The root hull of $Q$ contains
+$d=(1.949504,.157326)$, so $d_x\ge1.94$ and $d_y\le.16$.
+Suppose $v=(S,C)$ is an edge normal of $Q$, with $S\ge0$, $C>0$
+and $S^2+C^2=1$. Its perpendicular direction is $(C,-S)$.
+Containment of $d$ gives
+\[
+ CX_Q-SY_Q\ge Cd_x-Sd_y-a/2,
+\]
+while the bottom wall gives $Y_Q\ge a(C+S)/2$.
+Combining these inequalities yields
+\begin{equation}\label{eq:low-point-support-all}
+ h_Q(v)=SX_Q+CY_Q+a/2
+ \ge a+Sd_x-\frac{S^2}{C}d_y.
+\end{equation}
+
+\paragraph{Exclude the axes of $G$.}
+The compulsory $Q$ point in the strict $e_G$ strip excludes both
+signed $e_G$ directions. The support-line lemma, applied to
+$(2.377569,1.447771)\in G$, shows that separation with $Q$ below
+$G$ along $n_G$ would force $X_Q>43/20$, a contradiction.
+The remaining signed normal has negative vertical component and is
+excluded by the center bounds below.
+
+\paragraph{Exclude all upward axes of $Q$.}
+Write $h$ for upper support and $\ell$ for lower support.
+We prove $h_Q(v)>\ell_G(v)$ for every upward edge normal $v$ of $Q$.
+
+First let $v=(-S,C)=(-\sin\phi,\cos\phi)$, $0\le\phi\le\pi/2$.
+If $\phi\le\theta_G$, then $v$ belongs to the cone in
+\eqref{eq:roof-support-all} and $C\ge1/\sqrt2>.7$.
+The wall and $X_Q\le2.1$ give
+\begin{align*}
+ h_Q(v)-\ell_G(v)
+ &\ge \frac a2(1+C^2+CS)-.35S-.999C\\
+ &=C(a-.999)+\frac a2(1-C)^2
+                  +S\left(\frac{aC}{2}-.35\right)>0.
+\end{align*}
+If $\phi\ge\theta_G$, then $S\ge160/281>1/2$.
+Use the compulsory point $g=(1.873613,1.07226)\in G$:
+\[
+ h_Q(v)-\ell_G(v)
+ \ge\tfrac12(1+C^2)+S(\tfrac12C-.23)-1.08C.
+\]
+For $C\ge.46$, this is at least
+\[
+ .385+\tfrac12C^2-.83C
+       =\tfrac12(C-.83)^2+.04055>0.
+\]
+For $C\le.46$, it is at least
+$ .27+\tfrac12C^2-.58C\ge.109>0$.
+
+Now let $v=(S,C)=(\sin\psi,\cos\psi)$, $0\le\psi\le\pi/2$.
+If $\psi\le\pi/2-\theta_G$, then $v$ belongs to the roof cone
+and $C\ge s>1/2$. Equations \eqref{eq:roof-support-all} and
+\eqref{eq:low-point-support-all} imply
+\[
+ h_Q(v)-\ell_G(v)
+ \ge a-.999C-.16\frac{1-C^2}{C}
+ =a-.839C-.16/C>0.
+\]
+The last expression is concave for $C\in[1/2,1]$; its endpoint
+values are $a-.7395$ and $a-.999$, both positive.
+
+If $\pi/2-\theta_G\le\psi\le\pi/3$, then
+$\psi\ge\pi/4$, hence $S>.7$, $C<.71$, and $S^2/C\le3/2$.
+Using \eqref{eq:low-point-support-all} and the same point $g$ gives
+\[
+ h_Q(v)-\ell_G(v)
+ \ge 1+.06S-1.08C-.16S^2/C
+ \ge 1+.042-.7668-.24=.0352>0.
+\]
+Finally, if $\psi\ge\pi/3$, then $0\le C\le1/2$, $S>.8$.
+Use $X_Q\ge1.48$ and the compulsory point
+$k=(1.486351,1.472087)\in G$. The wall gives
+\begin{align*}
+ h_Q(v)-\ell_G(v)
+ &\ge\tfrac12(1+C^2+CS)-.01S-1.48C\\
+ &\ge .49+\tfrac12C^2-1.08C\ge.075>0.
+\end{align*}
+This case includes the horizontal endpoint $C=0$.
+
+\paragraph{Finish the separation argument.}
+For any unit normal with nonpositive vertical component,
+$v\cdot(C_G-C_Q)\le.49<a$. The sum of the two square projection
+radii is at least $a$, so that signed direction cannot separate them.
+All signed axes of both squares have now been excluded. The elementary
+separating-axis criterion for two squares therefore contradicts their
+disjoint interiors. Thus $X_{W_0}>2.1$.
+
+The already checked root box for $C_1$ is
+$[2.46,3.38]\times[.5,1.08]$. Therefore $X_{C_1}>X_{W_0}$ and
+$|Y_{C_1}-Y_{W_0}|\le.58$.
+Disjoint inscribed disks imply center distance at least $a>1$;
+since $.81^2+.58^2=.9925<1$, we have
+$X_{C_1}-X_{W_0}>.81$. Consequently $X_{C_1}>2.91$.
+The circumradius is less than $.71$, so the entire $C_1$ square
+lies in $x>2.20$.
+
+
+\section{An early virtual bottom row}\label{app:early-bottom-row}
+\begin{proposition}[Early row support]\label{lem:scalar-early-row}
+For a canonical case-$6$ packing in the original two-corner cover, the
+corridor and roof conclusions of Appendix~\ref{app:early-corridor} imply
+\[
+ n_G\cdot C_G\ge-s_GS+a(2s_G+c_G+1/2).
+\]
+\end{proposition}
+We prove this using the following scalar argument and two exact tables.
+
+Put $S=97/25$, $a_-=4003/4000$ and $a_+=25019/25000$.
+Let $P=C_1$, $Q=W_0$ and $R=G$ denote owners $2,5,0$ of the
+original two-corner cover. Assume $a_-\le a\le a_+$, that the actual
+squares are contained in $[0,S]^2$ and have disjoint interiors, and that
+their poses belong to that cover. Assume the newly derived bounds
+$X_Q>2.1$, $X_P>2.91$ and the original angle restriction
+\[
+ 2\arctan(5/16)\le\theta\le\pi/4.
+\]
+Write $e=(c,s)=(\cos\theta,\sin\theta)$ and $n=(-s,c)$.
+The three early roof inequalities are also explicit premises:
+\[
+ e\cdot C_R\le e\cdot q-a/2,\qquad
+ n\cdot C_R\le n\cdot r_j-a/2\quad(j=1,2),
+\]
+where $q=(2.17,2.18)$, $r_1=(1.529,2.043)$ and $r_2=(1.7,2.17)$.
+They follow from Lemma~\ref{lem:root-roof}. Only the original two-corner
+cover and the preceding corridor facts are used here.
+
+\paragraph{A wall support bound.}
+Every side-$a$ square $Q$ contained in $y\ge0$ satisfies
+\begin{equation}\label{eq:scalar-early-row-wall-bootstrap}
+ h_Q(n)\ge-sX_Q+\frac a2(1+c^2+cs).
+\end{equation}
+To prove this for every orientation, take an edge angle
+$0\le\phi\le\pi/2$ of $Q$. The bottom wall gives
+$Y_Q\ge a(\cos\phi+\sin\phi)/2$. Twice the resulting lower
+bound for $(h_Q(n)+sX_Q)/a$ is
+\[
+ c(\cos\phi+\sin\phi)+\cos(\phi-\theta)
+                         +|\sin(\phi-\theta)|.
+\]
+For $0\le\phi\le\theta$ this equals
+$(2c+s)\cos\phi+s\sin\phi$; for
+$\theta\le\phi\le\pi/2$ it equals
+$(2c-s)\cos\phi+(2c+s)\sin\phi$.
+Each expression is positive and concave on its interval, so its minimum
+occurs at an endpoint. The values are $2c+s$ at $0,\pi/2$, and
+$1+c^2+cs$ at $\theta$. The latter is smaller because
+\[
+ (2c+s)-(1+c^2+cs)=(1-c)(c+s-1)\ge0.
+\]
+This proves the bound, including all orientation endpoints.
+
+
+\paragraph{The remaining root facts used by the scalar argument.}
+The inherited compulsory hulls supply
+\[
+ z=(1.989606,.990917),\ d=(1.949504,.157326)\in Q,
+\]
+\[
+ g=(1.873613,1.07226),\ k=(1.486351,1.472087),
+ \ p=(2.377569,1.447771),\ I_0=(1.59,1.59)\in G.
+\]
+The original boxes give
+$C_G\in[1.69,1.97]\times[1.48,1.71]$ and
+$C_Q\in[1.48,2.40]\times[.5,.71]$.
+We use the proved early roof lemma in its full form: for the auxiliary
+intersection $B=(e\cdot q-a)e+(n\cdot r-a)n$, choosing $r=r_1$ for
+$\tan(\theta/2)\le1/3$ and $r=r_2$ otherwise, it gives
+$7/4<B_x\le1.94$ and $B_y<.999$ by the proof in
+Appendix~\ref{app:early-corridor}. Normalization moves only corner owners $3,4$;
+all owners and compulsory points used here are unchanged.
+
+\paragraph{The scalar separating-axis argument.}
+For contradiction assume
+\begin{equation}\label{eq:scalar-early-row-failure}
+ n\cdot C_G<-sS+a(2s+c+1/2).
+\end{equation}
+The following continuous scalar calculation fixes the separating normal.
+Its only bivariate sign calculation uses four degree-$(4,4)$ polynomial
+rectangles.
+\begin{lemma}[Four rectangles for the remaining row sector]
+Let $A_-=4003/4000$, $A_+=25019/25000$, and
+$2\arctan(5/16)\le\theta\le\pi/4$.
+Write $e=(c,s)$, $n=(-s,c)$, and let $G,Q$ be squares of common
+side $a\in[A_-,A_+]$, with $Q\subseteq\{y\ge0\}$ and $X_Q\le2.4$.
+Assume $d=(1.949504,.157326)\in Q$ and, for the bottom vertex $b$ of $G$,
+\[
+ e\cdot b\le e\cdot(2.17,2.18)-a,\qquad
+ n\cdot b\le n\cdot(1.7,2.17)-a,\qquad
+ n\cdot b\le a(c+2s)-3.88s.
+\]
+Then no upward edge normal of $Q$ of the form
+$v=(-\sin\phi,\cos\phi)$, $0\le\phi\le\theta$, separates $Q$
+below $G$: in fact $h_Q(v)>\ell_G(v)$.
+\end{lemma}
+\begin{proof}
+Put $C=\cos\phi$, $S=\sin\phi$,
+$\alpha=sC-cS\ge0$, and $\beta=cC+sS>0$.
+Then $\ell_G(v)=v\cdot b$ is at most each of
+\[
+ U_R=\alpha(2.17c+2.18s-A_-)
+       +\beta\bigl(A_+(c+2s)-3.88s\bigr),
+\]
+\[
+ U_2=\alpha(2.17c+2.18s-A_-)
+       +\beta(-1.7s+2.17c-A_-).
+\]
+The wall and $X_Q\le2.4$ give the lower bound
+\[
+ L_W=-2.4S+\tfrac12A_-(1+C^2+CS).
+\]
+For a second bound, use the perpendicular edge normal $(C,S)$ of $Q$.
+Containment of $d$ implies
+$CX_Q+SY_Q\le Cd_x+Sd_y+a/2$.
+Multiplication by $-S/C$ and combination with
+$Y_Q\ge a(C+S)/2$ yield
+\[
+ h_Q(v)\ge a-Sd_x-(S^2/C)d_y
+ \ge L_D:=A_--1.95S-.16S^2/C.
+\]
+Here $C>0$ throughout the stated sector.
+
+It remains to check four explicit rational inequalities. Set
+$t=\tan(\theta/2)$, $u=\tan(\phi/2)$ and substitute
+\[
+ c=\frac{1-t^2}{1+t^2},\quad s=\frac{2t}{1+t^2},\quad
+ C=\frac{1-u^2}{1+u^2},\quad S=\frac{2u}{1+u^2}.
+\]
+The actual triangular domain $5/16\le t\le\sqrt2-1$, $0\le u\le t$
+is contained in the following four rectangles. The indicated difference,
+multiplied by the indicated positive denominator, is a polynomial of
+bidegree at most $(4,4)$.
+\[
+\begin{array}{c|c|c|c}
+t\text{ interval}&u\text{ interval}&\text{difference}&\text{denominator}\\ \hline
+{[5/16,37/100]}&[0,1/15]&L_W-U_R&(1+t^2)^2(1+u^2)^2\\
+{[5/16,37/100]}&[1/15,5/12]&L_D-U_R&(1+t^2)^2(1+u^2)(1-u^2)\\
+{[37/100,5/12]}&[0,1/15]&L_W-U_2&(1+t^2)^2(1+u^2)^2\\
+{[37/100,5/12]}&[1/15,5/12]&L_D-U_2&(1+t^2)^2(1+u^2)(1-u^2)
+\end{array}
+\]
+After affine substitution of each rectangle by $[0,1]^2$, the least
+coefficient in the tensor Bernstein basis of degree $(4,4)$ is,
+in the same order,
+\[
+ \frac{1023451961907493}{253125000000000000},\qquad
+ \frac{3800635215497}{988769531250000},\qquad
+ \frac{6903188194333}{10125000000000000},\qquad
+ \frac{10126578211}{19775390625000}.
+\]
+All four numbers are positive. Bernstein basis functions are nonnegative
+and sum to one, so all four polynomials are positive on their entire
+closed rectangles. This proves the assertion, including all endpoints.
+
+For reproducibility, \texttt{check\_positive\_sector.py} constructs the
+four polynomials directly from the displayed support expressions and
+checks all $4\cdot25=100$ coefficients with rational arithmetic. If
+$q_{ij}$ are the coefficients after affine substitution, its conversion is
+\[
+ b_{ij}=\sum_{k\le i,\,l\le j}q_{kl}
+ \frac{\binom{i}{k}}{\binom4k}
+ \frac{\binom{j}{l}}{\binom4l}.
+\]
+The output records every coefficient. There is no angular sampling
+assumption and no pose enumeration in this certificate.
+\end{proof}
+
+
+\begin{proposition}[The row-failure hypothesis fixes the separating normal]
+Let $G$ and $Q$ be squares with disjoint interiors, with
+$Q\subseteq\{y\ge0\}$. Assume the original seven-round compulsory hulls
+and their center boxes, the common-owner angle restriction, and the
+early slanted-roof lemma.
+Write $Q=W_0$, $e=(c,s)$, $n=(-s,c)$ for the axes of $G$, and
+$a\in[4003/4000,25019/25000]$. If
+\[
+ \ell_G(n)<a(c+2s)-3.88s,
+\]
+then $h_Q(n)\le\ell_G(n)$.
+\end{proposition}
+\begin{proof}
+We exclude every signed separating axis except the displayed one.
+The available center boxes give
+\[
+ |X_G-X_Q|\le.71<a,\qquad Y_G-Y_Q\ge.77>0,
+ \qquad 1.48\le X_Q\le2.40.
+\]
+Hence no unit normal with nonpositive vertical component can separate
+$Q$ below $G$: its center projection is at most $.71$, whereas the
+sum of the square projection radii is at least $a$.
+
+Both signed $e$ directions are excluded by direct point interlacing.
+The compulsory points
+\[
+ z=(1.989606,.990917)\in Q,\quad
+ g=(1.873613,1.07226)\in G,\quad I_0=(1.59,1.59)\in G
+\]
+satisfy $e\cdot g<e\cdot z<e\cdot I_0$ throughout
+$160/231\le\tan\theta\le1$. The two positive projection margins,
+after division by $c$, are at least
+$693/20000$ and $1772147/115500000$.
+Thus only $n$ remains among the axes of $G$.
+
+It remains to exclude upward axes of $Q$. The following support bounds
+use the compulsory low point $d=(1.949504,.157326)\in Q$ and the wall.
+For $C^2+S^2=1$, $C>0$, $S\ge0$, they are
+\[
+ h_Q((S,C))\ge a+Sd_x-S^2d_y/C,\qquad
+ h_Q((-S,C))\ge a-Sd_x-S^2d_y/C.
+\]
+Each follows by eliminating $X_Q$ with the perpendicular edge inequality
+at $d$, and then using $Y_Q\ge a(C+S)/2$.
+
+For $v=(S,C)$, the estimates in the all-angle corridor lemma apply
+unchanged: none of these estimates assumes $X_Q\le2.1$.
+For clarity their exhaustive intervals and positive lower bounds for
+$h_Q(v)-\ell_G(v)$ are
+\[
+\begin{array}{c|c}
+ C\text{ interval}&\text{lower bound}\\\hline
+ s\le C\le1&a-.839C-.16/C>0\\
+ 1/2\le C\le s&.0352\\
+ 0\le C\le1/2&.49+C^2/2-1.08C\ge.075.
+\end{array}
+\]
+The first row uses the roof intersection $B_x\le1.94$, $B_y<.999$;
+the second uses $g_x\le1.88$, $g_y\le1.08$; the third uses
+$(1.486351,1.472087)\in G$ and $X_Q\ge1.48$.
+The first bound is concave on $[1/2,1]$ with positive endpoint values
+$a-.7395$ and $a-.999$. The last row includes $C=0$ without division.
+
+Now let $v=(-\sin\phi,\cos\phi)$, $0\le\phi\le\pi/2$.
+For $0\le\phi\le\theta$, the four-rectangle scalar lemma applies.
+Its row-roof premise follows directly from the supposed row failure;
+its other roof premises follow from the early roof lemma. It gives
+$h_Q(v)>\ell_G(v)$ using four bivariate quartics and their 100
+strictly positive Bernstein coefficients, with no pose-pair enumeration.
+
+For $\phi\ge\theta$, write $C=\cos\phi$, $S=\sin\phi$;
+then $C\le c_0=231/281$, $S\ge160/281$.
+If $C\ge3/10$, the low-point support bound and $g\in G$ give
+\[
+ h_Q(v)-\ell_G(v)
+ \ge f(C):=1-.92C-.16/C-.08\sqrt{1-C^2}.
+\]
+Here we used $a\ge1$, $d_x\le1.95$, $d_y\le.16$,
+$g_x\ge1.87$, and $g_y\le1.08$.
+This function is strictly concave on $[3/10,c_0]$, since
+\[
+ f''(C)=-.32/C^3+.08/(1-C^2)^{3/2}<0;
+\]
+indeed $(C/\sqrt{1-C^2})^3\le(231/160)^3<4$.
+Its endpoint values satisfy
+\[
+ f(3/10)>83/750>0,\qquad f(c_0)=5708/1622775>0.
+\]
+If $C\le3/10$, use the compulsory point
+$p=(2.377569,1.447771)\in G$, for which $p_x\ge2.375$,
+$p_y\le1.45$. The wall and $X_Q\le2.4$ yield
+\[
+ h_Q(v)-\ell_G(v)
+ \ge\tfrac12(1+C^2+CS)-.025S-1.45C
+ \ge .5-.025-1.45(.3)=.04>0.
+\]
+This includes the horizontal endpoint.
+
+The separating-axis criterion now leaves exactly the normal $n$,
+with $Q$ below $G$, as asserted. The calculation is conditional only on
+the original hulls, center boxes, angle restriction, roof, and row failure.
+It uses no $C_1$ pose, no later spatial bound, and no pair-pruning receipt.
+\end{proof}
+
+Thus the separating-axis argument gives
+\begin{equation}\label{eq:scalar-early-row-Q-below}
+ h_Q(n)\le\ell_G(n).
+\end{equation}
+\paragraph{Failure would push both bottom squares far to the right.}
+Let $E=[S-2a,S]\times[0,a]$. Its support is
+$h_E(n)=-sS+a(2s+c)$. Equations \eqref{eq:scalar-early-row-failure} and
+\eqref{eq:scalar-early-row-Q-below} give $h_Q(n)<h_E(n)$.
+Combining this with \eqref{eq:scalar-early-row-wall-bootstrap} yields
+\[
+ X_Q>S-2a+a\kappa(\theta),\qquad
+ \kappa(\theta)=\frac{(1-c)^2+cs}{2s}.
+\]
+For $t=\tan(\theta/2)$,
+\[
+ \kappa=\frac{1-t^2+2t^3}{2(1+t^2)},\qquad
+ \frac{d\kappa}{dt}=\frac{t(t^3+3t-2)}{(1+t^2)^2}<0
+ \quad(0<t\le\sqrt2-1).
+\]
+Indeed $\sqrt2-1<5/12$ and $(5/12)^3+3(5/12)-2<0$.
+At $t=\sqrt2-1$, the value of $\kappa$ is $\sqrt2-1$.
+Since $\sqrt2>707/500$,
+\[
+ X_Q>S-(3-\sqrt2)a>S-\frac{793}{500}a_+>2.29.
+\]
+The original centre boxes give $X_P>X_Q$ and
+$|Y_P-Y_Q|\le.58$. Their inscribed disks have disjoint interiors,
+so $|C_P-C_Q|\ge a>1$. As $.81^2+.58^2<1$,
+\begin{equation}\label{eq:scalar-early-row-P-right}
+ X_P-X_Q>.81,\qquad X_P>3.10.
+\end{equation}
+Every strict inequality here remains valid at both closed endpoints of
+the allowed interval for $a$. These stronger bounds are conditional on
+row failure; they are used only to reach its contradiction. In particular,
+they do not replace the later global deduction $X_{C_1}>3.1$.
+
+\paragraph{Now $P$ lies below the same line.}
+Clip the original $C_1$ centre polygons by $X_P\ge3.10$. For each
+of the ten original angle bins $k/96\le\tan(\theta/2)\le(k+1)/96$
+of $R$, the following numbers are lower bounds for
+$n\cdot(C_R-C_P)$ at both angle endpoints, uniformly over all of
+those clipped polygons:
+\[
+\begin{array}{c|rrrrrrrrrr}
+k&30&31&32&33&34&35&36&37&38&39\\\hline
+\text{lower bound}&1.2235&1.2418&1.2596&1.2771&1.2942&
+1.2998&1.3062&1.3114&1.3155&1.3320
+\end{array}
+\]
+These are exact decimal rationals, verified by vertex extrema in
+\texttt{check\_bootstrap\_c1.py}. No arc pruning or intersection
+conditioning is used in this table. The angle-interpolation loss is
+less than $3/96^2$, because $|C_R-C_P|<6$ and the angle width is
+at most $2/96$. The sum of the two square projection radii is at most
+$a_+(1+\sqrt2)/2<a_+\,169/140$. Consequently even the smallest
+entry leaves a margin greater than $3/200$, and
+\begin{equation}\label{eq:scalar-early-row-P-below}
+ h_P(n)<\ell_R(n).
+\end{equation}
+
+\paragraph{The strip contradiction.}
+The original polygons and the weaker cuts $X_P\ge2.91$, $X_Q\ge2.1$
+already put the complete squares below heights $33a/20$ and $7a/5$,
+respectively; \texttt{check\_early\_row\_strip.py} verifies these
+two bounds with exact vertex extrema and the midpoint square enclosure.
+In coordinates $(U,V)=(S-x,y)$, the relevant direction is $(s,c)$,
+with $r=s/c\ge160/231$. The proved wider-strip theorem applies because
+\[
+ \frac{33}{20}<\frac{903}{512}
+ =1+\alpha(160/231)\le1+\alpha(r),\qquad
+ \alpha(r)=\frac{r+1}{\sqrt{1+r^2}+1}.
+\]
+It says $h_E(n)\le\max\{h_P(n),h_Q(n)\}$.
+Equations \eqref{eq:scalar-early-row-Q-below} and
+\eqref{eq:scalar-early-row-P-below} therefore give
+$h_E(n)\le\ell_R(n)$, contradicting
+\eqref{eq:scalar-early-row-failure}. Thus
+\[
+ \boxed{\ n\cdot C_G\ge-sS+a(2s+c+1/2)\ }.
+\]
+This directly proves the normal support inequality and hence separation
+of $G$ from the virtual row; no preliminary assumption that $G$ intersects
+the rectangle is required.
+
+
+\paragraph{Certificate interface.}
+The scalar certificate reconstructs the four polynomials, verifies their
+$100$ Bernstein coefficients, checks the outer-sector arithmetic, and
+checks the whole-square height bounds and the ten-entry center-projection
+table against the original two-corner polygons. The early hulls, their
+normalization transport, the corridor bounds and the wider-strip theorem
+are its mathematical parents. All these parents are joined in the
+$103$-node assembly; later propagated center domains are not inputs to
+this row deduction.
 
 \section{A nine-point ending for the unused-corner case}
 In case~0 the marker $C_0$ is unused and the other eleven markers have
@@ -2445,16 +3051,6 @@ Lemma~\ref{lem:convex-center-cover} shows that convexifying the center
 cover loses no common-core information. Thus only four center-support
 values per bin are needed for this step; the preceding derivation of the
 cover remains part of the certificate.
-
-More generally, an intersection of two planar compulsory polygons has a
-witness using at most four generating points in total.  Indeed, equality
-of two convex combinations gives four linear equations: two coordinates
-and the two conditions that coefficients sum to one.  A minimum-support
-nonnegative solution uses at most four coefficients, since otherwise a
-linear dependence would allow one coefficient to be removed.  In case~3
-the simpler shared point $z$ can be checked directly, avoiding even this
-four-point terminal witness.
-
 
 \section{A sparse shared-point exclusion of case 5}
 \label{sec:sparse-case-five}
@@ -2622,7 +3218,7 @@ the argument.  It supplies the upper bound $s(11)\le T$; the exclusion of
 smaller containers is the separate global reduction and mixed-support argument in the text.
 
 
-\section{Which ideas transfer from the other proofs}
+\section{Sources and reproducibility}\label{sec:reproducibility}
 The marker reduction, strip supports, exact representation of Trump's
 construction, compulsory-hull propagation and intermediate pose covers
 come from the shared proof \cite{shared}. The repository
@@ -2634,118 +3230,64 @@ branches into one common cone \cite{formalized}; that basic idea is not
 claimed as new here. The mixed support comparison in
 Section~\ref{sec:mixed-alignment} is the new endpoint of this synthesis.
 
-The three eleven-square reviews in the supplied papers collection
-\cite{levy} suggest useful general exclusion rules. Their hypotheses must
-be preserved; their large fixed-scale certificates are not interchangeable
-with the optimality-scale domains used here.
-
-\begin{lemma}[Charges with reserved sites]
-Let $I$ be a set of square owners, and let each owner have a compact core
-strictly inside its square. Let $U$ consist of sites known to lie in the
-closed squares of owners outside $I$. For charge $j$, choose a finite site
-set $S_j$, an integer threshold $k_j\ge1$, and a weight $w_j\ge0$.
-A core earns $w_j$ if it contains at least $k_j$ sites of $S_j$.
-If every allowed core of owner $i$ earns total charge at least $\gamma_i$,
-then
-\[
- \sum_{i\in I}\gamma_i\le
- \sum_j w_j\left\lfloor
-       \frac{|S_j\setminus U|}{k_j}\right\rfloor.
-\]
-\end{lemma}
-\begin{proof}
-The cores are mutually disjoint. A core cannot contain a reserved site:
-that would put a point in the interior of its square and the closed square
-of a foreign owner, forcing interior overlap. If $r$ cores earn charge
-$j$, they therefore contain at least $rk_j$ distinct unreserved sites of
-$S_j$. Bound $r$, multiply by $w_j$, and add. Overlap between different
-site sets causes no problem because their valid inequalities are added.
-\end{proof}
-
-\begin{lemma}[A median-projection atom has capacity one]
-Fix $2k-1$ sites. Charge a compact convex set $K$ when its projection
-interval contains the median of the site projections in every direction.
-Two disjoint compact convex sets cannot both be charged.
-\end{lemma}
-\begin{proof}
-A strict separating direction gives disjoint projection intervals. They
-cannot both contain the same median.
-\end{proof}
-Equivalently, $K$ must meet the convex hull of every $k$-site subset.
-This condition does not require $K$ to contain any particular site.
-For a square core it suffices to test its axis directions and the normals
-to site-pair lines: between successive such directions, the median site
-and support signs are fixed, so the required inequalities are linear in
-the direction. These finite tests can charge a whole varying pose family
-even when it has no common compulsory point.
-
-Both lemmas are candidates for further shortening the finite exclusions.
-No charge certificate from these lemmas is used in the present proof.
-A quick obstruction prevents wasted search: if the current two owner
-covers contain even one pair of disjoint reference cores, no single
-median atom can charge both complete families.
-
-\paragraph{A simple strict core.}
-For a half-angle interval of width $1/N$, use its midpoint orientation and
-a concentric core of side $N/(N+1)$. The angular mismatch is at most $1/N$,
-and
-\[
- \frac{N}{N+1}(\cos d+|\sin d|)
- \le\frac{N}{N+1}(1+1/N)=1<a.
-\]
-The entire closed core is therefore strictly inside the physical square.
-This supplies the strictness needed by the charge lemmas, including when
-physical squares touch.
-
-\paragraph{What does not port unchanged.}
-The threshold-bound certificate discussed in Part II of \cite{levy}
-uses a different scale. Rescaling its container to $S=97/25$ makes its
-parent squares have side $776/775$, larger than our upper bound
-$25019/25000$. Its charge minima therefore do not establish an exclusion
-for our smaller squares. The method transfers; the numerical certificate
-requires new verification on the actual owner domains.
-
-
-\section{Sources and reproducibility}\label{sec:reproducibility}
 The shared archive supplies the marker geometry, construction and source
-pose data; the references below identify the other ingredients. The
-supplement contains the selected source files, exact certificates,
-reviewed checkers, dependency manifest and paper. It does not require a
-download of the full formalized repository. Historical source receipts
-serve only as integrity references or comparison targets after fresh
-geometric operations have succeeded; they are not computational axioms.
+pose data. The present revision adds the displayed corridor, scalar-row
+and first-row column arguments and substitutes their four spatial
+consequences into the retained hull ancestry. Source receipts serve only
+as integrity references or comparison targets after exact geometric
+operations have succeeded; saved success flags are not computational axioms.
 
-From the extracted full supplement, the entry points are
+The finite verification record has three parts: the unchanged acceptance
+of ownership cases $0$--$5$; the $103$-node case-$6$ graph with its
+own-rule evidence and parent identities; and the fifth-prefix mixed-support
+certificate. The new graph's SHA-256 digest is
+\begin{center}\small\texttt{27a06dbbacfcbcdc8eb682f610d2dd1a63b7}\\
+\texttt{59e86f5c6a780c32624b581b4fee}.\end{center}
+Its new mathematical inputs are the seven-round hull/angle interface,
+the corridor theorem, the scalar early-row interface, the first row-only
+round, the full-column interface and the first both-supports round.
+The latter supplies exactly the four extrema in
+Proposition~\ref{input:global}. The retained later numerical covers are
+reused only after their original hypotheses and geometry identities have
+been revalidated. The selected route does not use additional exploratory
+propagation states, a two-prefix endpoint, or a different case-$0$ exclusion.
+
+The source-bound checkers run in CPython~3.12.4 with exact integer and
+rational arithmetic; optimized execution with \texttt{-O} is rejected.
+They require no numerical solver, network connection or Lean installation.
+Reproduction requires the selected immutable source data, every imported
+arithmetic kernel, the mathematical input statements, the two new
+propagation schedules, and the dependency assembler. A reproducible edit
+script separately binds every source fragment used to generate this
+self-contained manuscript. File hashes establish identities; the proofs
+and exact deductions establish their mathematical meaning.
+
+The new components have been replayed, and the complete revised
+dependency closure has been independently rechecked against the unchanged
+exact executions. The supplied portable entry points are
 \begin{verbatim}
 python3 verify.py --check-inputs
-python3 verify.py --quick --jobs 2
+python3 verify.py --early
 python3 verify.py --full --jobs 2
 \end{verbatim}
-The first command checks the immutable file inventory and hashes.
-Quick mode runs the small conditional checks under \path{quick/}; it does
-not reconstruct their global ancestry. Full mode executes the selected
-ownership, angle, corner, spatial, domain-generation and endpoint checks,
-then requires the ownership acceptance and the complete case-6 dependency
-closure. The checkers were tested with CPython~3.12.4 using only its standard
-library. Optimized execution with \texttt{-O} is rejected. No numerical solver,
-network connection or Lean installation is required.
+The first command checks the manifest-bound input inventory. The second
+freshly reconstructs the conditional early interfaces, both selected
+propagation states and the four strict extrema; it does not establish
+their earlier global ancestry. This conditional command has passed in
+the portable package. Full mode first executes the unchanged $61$-step
+baseline schedule, a computational superset of the mathematical proof,
+and then the early components and revised $103$-node assembly. In
+particular, the runner may replay excluded branches that the revised
+argument no longer needs. The option \texttt{--revised} reassembles the
+new route only after a complete baseline run is available. The new
+wrapper and assembly checks have been reviewed, but the full portable
+command has not yet been executed end to end. This remaining execution
+must not be inferred from the successful component checks.
 
-Fresh full-run logs and the execution ledger are written under
-\path{verification/}. A successful full run produces
-\path{verification/overall-result.json}, bound to that run's manifest
-and recorded outputs. As reported in Section~\ref{sec:verification}, the
-local component replays and dependency closure have completed, but the
-portable full command has not yet been run end to end. The distribution
-therefore provides a reproducible route for that additional verification,
-without presenting it as an already observed result.
-
-The small route has separate input files for the new fifth-prefix
-envelope and the older optional capture certificate. The latter remains
-bound to its original box. Its local-isolation and capture results are
-supplementary. Likewise, the quick case-0 terminal assumes its explicit
-H12 hulls; full ancestry is supplied by the global replay, not by that
-small terminal command. The manifests distinguish all
-these inputs and verification scopes.
+The supplementary local-isolation and fine-capture certificates are
+bound to their own original boxes and are not needed by this proof.
+Likewise, a small case-$0$ terminal check assumes its stated compulsory
+hulls; the selected complete case-$0$ ancestry supplies them separately.
 
 The formalized repository was inspected at commit
 \texttt{cdc746ed907d258057c283aeb6d077cb2c27e349}.
@@ -2759,12 +3301,16 @@ synthesis is not claimed as a new Lean formalization.
 W. Stromquist, \emph{Packing 10 or 11 Unit Squares in a Square},
 Electronic Journal of Combinatorics \textbf{10} (2003), R8.
 \href{https://www.combinatorics.org/ojs/index.php/eljc/article/download/v10i1r8/pdf}{Original paper}.
-The rectangle, triangle and wall-quadrilateral nonavoidance lemmas support
-the marker cover; the new endpoint is not attributed to this paper.
+Lemmas 1 and 2 (p.~2) motivate the rectangle and triangle rules, and
+Lemma 4 (pp.~3--4) motivates the wall rule. Appendix~\ref{app:nonavoidance}
+gives complete proofs, including the precise variant used here.
+The mixed-support endpoint and early corridor argument are not attributed
+to this paper.
 
 \bibitem{shared}
-\emph{Shared eleven-square proof and final n11-global-proof archive}.
-\href{https://chatgpt.com/share/6ac5e31b-2758-83e8-affd-0eb6cf713a06}{Shared conversation and attachments}.
+\emph{Geometric source proof and exact certificate archive}, supplied
+anonymously. The relevant mathematical inputs are reproduced in the
+verification supplement.
 
 \bibitem{repository}
 Queuingtheorydotcom, \emph{11SquaresOptimal}.
@@ -2778,18 +3324,5 @@ Queuingtheorydotcom, \emph{11SquaresFormalized}, inspected commit
 The optional DirectTree encoding is a proved prototype, not the active
 production checker imported by the reported full proof.
 
-\bibitem{levy}
-J. Levy, eleven-square proof reviews in the
-\href{https://jlevy.github.io/squares/papers.html}{square-packing papers collection}:
-\href{https://jlevy.github.io/squares/papers/n11-lower-bounds-explainer.html}{Part I},
-\href{https://jlevy.github.io/squares/papers/n11-threshold-bound-review.html}{Part II},
-\href{https://jlevy.github.io/squares/papers/n11-optimality-review.html}{Part III}.
-Sources for the charge-capacity and median-projection discussion; specific
-certificate scales and hypotheses are retained in the transfer above.
-
-\bibitem{oliveira-vallentin}
-F. M. de Oliveira Filho and F. Vallentin,
-\emph{Computing upper bounds for the packing density of congruent copies
-of a convex body}, \href{https://arxiv.org/abs/1308.4893}{arXiv:1308.4893}.
 \end{thebibliography}
 \end{document}
