@@ -1,5 +1,10 @@
 # Optimality of the eleven-square packing
 
+**New geometric manuscript:** [Eleven squares: owners, support chains, and angle penalties](paper/README.md)
+gives the marker-based reduction and an independent-angle support argument,
+with a self-contained verification supplement. See its verification notes for
+the distinction between completed component checks and the portable full replay.
+
 This repository presents a computer-assisted certificate proof that the known
 packing of **eleven congruent unit squares in a square is optimal**, allowing
 arbitrary independent rotations and boundary contact.
