@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage[margin=0.9in]{geometry}
-\usepackage{amsmath,amssymb,amsthm,booktabs,array,tikz,microtype}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,longtable,tikz,microtype}
 \usepackage[T1]{fontenc}
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black,citecolor=blue!45!black]{hyperref}
@@ -34,6 +34,9 @@ dependency nodes. A positive combination of two support chains rules out improve
 while allowing five tilted squares to rotate independently: angle
 disagreement pays for the comparison with their common-angle value.
 This endpoint needs only four interval slices and a coarse rational envelope.
+Among the excluded ownership cases, an elementary segment trap replaces
+the terminal search in case $0$, a floor inequality reduces case $3$ to
+twelve point assertions, and case $5$ uses a table of sixty-five points.
 The geometric primitives are proved explicitly, and finite exact-rational
 certificates supply the remaining global deductions. This research revision
 uses completed local replays and a revalidated dependency assembly. A
@@ -905,12 +908,12 @@ all $55$ pairwise separations.\\
 Ownership cases $0$--$5$ & Complete exact exclusions from the initial
 compulsory regions, with the stated symmetry restrictions. Case $7$ has
 the elementary geometric exclusion.\\
-Shortened case $0$ & A segment and a seven-vertex polygon give an ending
-with $760$ promotions. Its required prefix and six new promotions are
-freshly checked. Its parent exclusions and terminal are the selected case-$0$ route;
-the original $794$-promotion certificate is a redundant comparison.\\
-Shortened cases $3,5$ & Respectively $62$ promotions in $11$ owner checks
-and $170$ in $32$ checks, each ending at a shared interior point.\\
+Shortened case $0$ & The checked $760$-promotion ancestry and $135$ owner
+checks establish three points needed by an elementary segment trap.
+The former terminal angle-cover exclusion is a redundant check.\\
+Shortened cases $3,5$ & Case $3$ uses $12$ point assertions: one elementary
+floor implication and eleven assertions in $8$ owner checks. Case $5$
+uses $65$ assertions in $31$ checks. Both end at a shared interior point.\\
 Surviving case $6$ & A closed $103$-node dependency graph joins the angle
 exclusions, corner interfaces, spatial deductions, virtual supports and
 selected endpoint. It includes the early corridor, scalar row, one-round
@@ -933,15 +936,21 @@ measure; no claim of a minimum-size checker is made.
 
 \paragraph{Observed verification and portable replay.}
 The six ownership exclusions retain their completed exact replays and
-accepted ancestry. The revised case-$6$ route combines freshly replayed
+accepted ancestry. The smaller case-$3$ and case-$5$ tables have fresh
+exact replays from the initial compulsory regions. For case $0$, an exact
+convex-membership check connects the three trap points to the already
+checked $760$-promotion ancestry; this bridge does not replay that ancestry.
+The revised case-$6$ route combines freshly replayed
 early components with unchanged exact executions whose input identities,
 own-rule evidence and parent closure have been revalidated. All $103$
 nodes are accepted by that assembly. Independent checks also reject
 altered inputs, missing evidence and non-strict replacements of the new
 strict bounds. This records component execution and dependency closure;
 it does not report a newly executed portable end-to-end run. The supplied
-portable wrapper has passed its conditional early-component replay and
-source/control-flow checks. Its full command has not been run end to end.
+portable wrapper supplies separate ownership and early-component replays.
+Its full command retains the longer ownership certificates as redundant
+checks and also requires the revised receipts and dependency assembly.
+Its full command has not been run end to end.
 
 \paragraph{Boundary contact.}
 A compulsory region may belong to a closed square without lying strictly
@@ -2923,96 +2932,271 @@ are its mathematical parents. All these parents are joined in the
 $103$-node assembly; later propagated center domains are not inputs to
 this row deduction.
 
-\section{A nine-point ending for the unused-corner case}
+\section{An elementary segment trap for the unused-corner case}
+\label{sec:case-zero-trap}
 In case~0 the marker $C_0$ is unused and the other eleven markers have
-distinct owners.  Work in the normalized container $[0,97/25]^2$, with
+distinct owners. Work in the normalized container $[0,97/25]^2$, with
 $4003/4000<a<25019/25000$ and the symmetry restriction
 $0\le\tan(\theta_{I_0}/2)<5/12$ from
-Appendix~\ref{app:initial-corners}.
-The last contradiction needs only two strengthened compulsory hulls:
+Appendix~\ref{app:initial-corners}. The initial compulsory hulls and the
+selected propagation chain will establish three additional owned points.
+Once they are known, the following elementary argument excludes the case
+without any final subdivision of the square's orientation.
+
+All coordinates below are exact terminating decimals.
+Put
 \[
- K_{W_0}=\left\{\frac{97}{50}\right\}
-       \times\left[\frac1{10},\frac{99}{100}\right],
- \qquad K_{I_2}=\frac1{1000}\operatorname{conv}\mathcal V,
+ A=(-.58,-.11),\quad B=(-.24,-.71),\quad C=(.71,-.70),
+ \qquad \kappa=\sqrt2-237/200>.22.
 \]
-where
+\begin{lemma}[Three-point height bound]\label{lem:case-zero-height}
+If an open unit square $R$ contains the origin but none of $A,B,C$,
+then $\sup_{z\in R}z_y\ge\kappa$.
+\end{lemma}
+\begin{proof}
+Choose orthonormal side directions $u=(c,s)$ and $v=(-s,c)$ with
+$c,s\ge0$, $c^2+s^2=1$.  In these coordinates write
 \[
-\begin{aligned}
-\mathcal V=\bigl\{&(1901,1899),(2103,1897),(2835,1926),(2856,2405),\\
-                 &(2835,2833),(1925,2833),(1897,2235)\bigr\}.
-\end{aligned}
+ R=\{z:r-1<u\cdot z<r,\ t-1<v\cdot z<t\},\qquad 0<r,t<1.
 \]
-All other owners may use their initial compulsory hulls.  On these weaker
-premises, the complete 96-bin cover of the $I_1$ owner's possible poses
-is empty.  This is the terminal contradiction; it does not assume that
-the other owners have any particular positions or contact graph.
+Its upper height is $H=sr+ct$.  Calling an excluded point left, right,
+below or above according to a face through which it is excluded, two
+possibilities are immediate:
+\begin{itemize}
+\item If $A$ is below, then $t\ge1+.58s-.11c\ge.89$.
+Because its $v$ coordinate is negative, $.58s<.11c$, whence
+$c>.9$ and $H>.801$.
+\item If $C$ is left, then $r\ge1+.71c-.70s\ge1-.70s$.
+Its $u$ coordinate is negative, which implies $s>.7$.
+Concavity of $s-.70s^2$ on $[.7,1]$ gives $H\ge.30$.
+\end{itemize}
+We may therefore exclude these two possibilities.  Since $A_u,B_u<0$
+and $C_v<0$, the remaining face choices force one of
+\[
+ \text{$B$ left and $C$ below},\qquad
+ \text{$A$ left and $B$ below}.
+\]
+Indeed, $B$ left rules out $C$ right because
+$C_u-B_u=.95c+.01s<1$.  Similarly $B$ below rules out $A$ above because
+$A_v-B_v=.34s+.60c<1$.  Finally $B$ above implies
+$.24s>.71c$, so $C_u<0$; $C$ must be below, but then
+$B_v-C_v=.95s-.01c<1$, a contradiction.  These strict projection bounds
+follow either directly or from the corresponding squared lengths
+$.9026<1$ and $.4756<1$.
 
-The ancestry is substantial but now explicit and freshly checked.  The
-first thirteen original promotion rounds establish 754 compulsory points
-in 134 owner checks.  Their last state already contains both endpoints of
-$K_{W_0}$.  From that state, one further exact owner check establishes the
-six vertices of $K_{I_2}$ not already known.  Thus the selected argument
-has 760 promoted vertices in 135 positive owner checks, followed by the
-empty-domain check.  The original ending used 794 promotions in 142 owner
-checks.  The main gain is the small terminal geometry: a segment and a
-seven-vertex polygon suffice to express the obstruction.
+Put $w=s+c\in[1,\sqrt2]$.  In the first remaining case,
+\begin{align*}
+ H&\ge s(1-.24c-.71s)+c(1-.71s-.70c)\\
+  &=w-.70-.01s^2-.95sc\\
+  &\ge w-.235-.475w^2\ge\kappa.
+\end{align*}
+In the second,
+\begin{align*}
+ H&\ge s(1-.58c-.11s)+c(1+.24s-.71c)\\
+  &=w-.71+.60s^2-.34sc\\
+  &\ge w-.54-.17w^2\ge.29.
+\end{align*}
+Both last inequalities follow by checking the two endpoints of a concave
+quadratic.  Finally $\sqrt2>281/200$ proves $\kappa>.22$.
 
-A new exact replay established the entire original ancestry from its
-initial owned hulls; the six-point promotion and the reduced terminal test
-were then checked again.  The result, including hashes binding that fresh
-ancestry, is recorded in \texttt{case0-nine-point-fresh.json}.  The
-strict-slack boundary argument for the ownership-only checker applies.
-The marker cover in Section~\ref{hybrid:ownership} and the forcing and
-symmetry lemmas in Appendix~\ref{app:initial-corners} supply the initial
-geometric premises of this case exclusion.
+\end{proof}
 
+\begin{lemma}[Segment trap]\label{lem:case-zero-trap}
+In addition set $D=(-.07,.22)$ and $E=(.33,.22)$.
+Every open unit square containing the origin contains one of $A,B,C$
+or meets the segment $[D,E]$.
+\end{lemma}
+\begin{proof}
+Suppose otherwise. Write the square in the coordinates $u,v,r,t$ of the
+preceding proof, so its upper height is $H=sr+ct$.
+If no point of a segment lies in an open square, they have a separating line whose normal is either a square side
+normal or a normal to the segment.  For completeness, the forbidden
+centers form the Minkowski sum of the segment and the reflected square;
+its edge directions come from those two summands, giving exactly these
+normal directions, including boundary contacts.
 
-\section{A shorter certificate for one excluded case}
+The square cannot lie to the left of $[D,E]$ in $u$ coordinates.
+Such a separation would require $r\le D_u$, hence $D_u>0$.
+Both $A$ and $B$ are then strictly between its two $u$ faces, because
+\[
+ D_u-A_u\le\sqrt{.3690}<1,\qquad
+ D_u-B_u\le\sqrt{.8938}<1,
+ \qquad A_u,B_u<0<r.
+\]
+Moreover $D_u>0$ implies $A_v>0$.
+If $B_v\le0$, the two points could avoid the square only through opposite
+$v$ faces, which would require $A_v-B_v\ge1$; this contradicts
+$.34s+.60c<1$.  If $B_v>0$, then $C_u<0$ and
+$D_u-C_u=-.78c+.92s\le.92<1$.
+Thus $B,C$ lie strictly between the $u$ faces and on opposite sides of
+$v=0$, again impossible since $B_v-C_v=.95s-.01c<1$.
+
+The square cannot lie below $[D,E]$ in $v$ coordinates either.
+This would require $t\le E_v$, so $E_v>0$, $B_v<0$ and $C_u>0$.
+The points $B,C$ are strictly between its $v$ faces, since
+\[
+ E_v-B_v=-.57s+.93c\le.93<1,\qquad
+ E_v-C_v=.38s+.92c\le\sqrt{.9908}<1.
+\]
+They have opposite $u$ signs and $C_u-B_u=.95c+.01s<1$,
+so they cannot both avoid the square through its $u$ faces.
+The two oppositely oriented square-axis separations are ruled out by
+$E_u>0$ and $D_v>0$, since the origin is interior to the square.
+
+The only remaining separating normal is vertical.  The square cannot
+lie above $y=.22$, since it contains the origin.  It would therefore
+have $H\le.22$, contrary to Lemma~\ref{lem:case-zero-height}.
+\end{proof}
+
+\paragraph{Application to ownership case 0.}
+Return to the packing coordinates.  The $I_1$ owner contains
+$p=(2.17,1.70)$ from its initial compulsory hull.  The original $I_0$
+and $C_1$ markers are $(1.59,1.59)$ and $(2.88,1)$.
+It is therefore enough to prove the three additional ownership facts
+\[
+ (1.93,.99)\in\operatorname{int}W_0,
+ \qquad (2.10,1.92),(2.50,1.92)\in\operatorname{int}I_2.
+\]
+Convexity gives the entire intervening segment in $\operatorname{int}I_2$.
+Translating by $-p$ gives exactly $A,B,C,D,E$ above.
+Because the actual side satisfies $a>1$, an open unit square containing
+$p$ can be chosen with its closure inside the actual $I_1$ square:
+in each side coordinate choose an interval of length one, strictly
+inside the actual interval and with $p$ strictly between its endpoints.
+That unit square avoids the three foreign points and the foreign
+segment, contradicting the trap lemma.
+
+\paragraph{Connection to the selected case-0 ancestry.}
+The selected initial-hull chain establishes all thirteen hull states
+through $H_{12}$ using 754 point promotions in 134 positive owner checks.
+The point $(1.93,.99)$ belongs to the $W_0$ hull already at $H_6$, and
+also at $H_{12}$.  The same six additional $I_2$ promotions used in the
+previous terminal check establish the seven-point polygon
+\[
+ \frac1{1000}\operatorname{conv}\{
+ (1901,1899),(2103,1897),(2835,1926),(2856,2405),
+ (2835,2833),(1925,2833),(1897,2235)\}.
+\]
+Both $(2.10,1.92)$ and $(2.50,1.92)$ lie strictly in this polygon.
+Thus the preceding trap replaces the final empty-pose check with an
+all-angle geometric contradiction.  It uses the same 760 point
+promotions in 135 positive owner checks, without any alternative
+marker-motion ancestry.  Convex membership and the six promotions are
+rechecked by \texttt{check\_case0\_elementary\_terminal.py}; the analytic
+argument above supplies the all-angle terminal step.  The script alone
+is conditional on $H_{12}$: a complete computational verification must
+also replay the initial-hull ancestry.
+
+The command \texttt{python3 verify.py --ownership --jobs 2} writes this
+bridge check to \path{verification/revised-ownership/case0-bridge.json}.
+It checks the six tail promotions and the required convex memberships;
+it does not rerun the thirteen-round ancestry. That ancestry remains a
+required part of the full verification. The former $96$-bin empty-domain
+ending is retained only as a redundant computational check.
+
+\section{A floor bridge and twelve point assertions for case 3}
 \label{sec:short-case-three}
 
-The kernel viewpoint gives a concrete simplification of marker case~3.
 Use the source normalization
 \[
  S=\frac{97}{25},\qquad
  \frac{4003}{4000}=A_-<a<A_+=\frac{25019}{25000}.
 \]
-In this case one square owns $C_0,W_0$, and every other marker has its own
+In this case one square $G$ owns $C_0,W_0$, and every other marker has its own
 owner.  The following result assumes the initial compulsory polygons
 established by the marker-cover argument.
 
-\paragraph{The shortened certificate.}
-The exact ownership propagation can end with the single rational point
+\begin{lemma}[A floor bridge]\label{lem:case-three-floor-bridge}
+Let a square of side $a>1$ lie in $y\ge0$ and contain
+$A=(1,1)$ and $B=(97/50,3/4)$ in its interior. Then it contains
+$P=(33/20,1)$ in its interior.
+\end{lemma}
+\begin{proof}
+Choose edge directions $e=(c,s)$ and $n=(-s,c)$ with $c,s\ge0$ and
+$c^2+s^2=1$, and write the center as $Ue+Vn$. Membership in the square
+is given by $|e\cdot X-U|<a/2$ and $|n\cdot X-V|<a/2$.
+Three of the four required strict inequalities for $P$ follow from those
+for $A,B$, because
+\[
+ e\cdot P\ge e\cdot A,\qquad
+ n\cdot B<n\cdot P\le n\cdot A.
+\]
+Only $e\cdot P<U+a/2$ remains. Put $d=29/100$; the exact inequality
+$d^2>9/112$ gives $d>3/(4\sqrt7)$.
+If $s\le3/4$, then
+\[
+ e\cdot(P-B)=-dc+\frac{s}{4}<0,
+\]
+because $s/(4c)\le3/(4\sqrt7)<d$. Ownership of $B$ gives the result.
+
+Suppose $s\ge3/4$. The bottom wall gives
+$sU+cV\ge a(c+s)/2$, while ownership of $B$ gives
+$V<n\cdot B+a/2$. Multiply the latter inequality by $c\ge0$ and
+combine the two inequalities to eliminate $V$. This yields
+\[
+ U+\frac a2\ge a+\frac{97}{50}c-\frac{3c^2}{4s}.
+\]
+The difference between this lower bound and $e\cdot P$ is $a-1+E$, where
+\[
+ E=1+dc-s-\frac{3c^2}{4s}
+  =c\left(d-\frac{c(3-s)}{4s(1+s)}\right).
+\]
+For $s\in[3/4,1]$, the numerator factors $c=\sqrt{1-s^2}$ and $3-s$
+decrease, while the positive denominator $4s(1+s)$ increases. Hence
+\[
+ \frac{c(3-s)}{4s(1+s)}\le\frac{3}{4\sqrt7}<d.
+\]
+Thus $E\ge0$, including $c=0$, and $a>1$ supplies strictness.
+\end{proof}
+The bottom wall therefore forces the horizontal segment from $A$ to $P$
+into $G$, although the second owned marker $B$ lies below that segment.
+This implication covers every orientation without angle subdivision.
+
+\paragraph{The complete point table.}
+The remaining ownership propagation ends with the single rational point
 \[
  z=\left(\frac{49}{25},\frac{73}{25}\right)=(1.96,2.92).
 \]
 The certificate forces $z$ strictly inside both the $I_3$ owner and the
 $W_2$ owner.  These owners are distinct, so their interiors intersect,
-which is impossible in a packing.  The promoted points are organized as
-follows:
+which is impossible in a packing. Every terminating decimal in the
+following table is exact. A point listed under two owners counts as two
+ownership assertions.
 \begin{center}
-\begin{tabular}{c l r}
-Stage & Owners whose compulsory regions are enlarged & New points\\
-\hline
-1 & $\{C_0,W_0\}, I_0,I_1,I_2,I_3$ & 40\\
-2 & $C_2,I_0,I_2,I_3$ & 20\\
-3 & $I_3,W_2$, each receiving $z$ & 2
+\begin{tabular}{cll}
+\toprule
+Stage & Owner & New compulsory points\\\midrule
+1 & $G$ & $(1.65,1)$, by Lemma~\ref{lem:case-three-floor-bridge}\\
+  & $I_0$ & $(1.7,1.5)$, $(1.32,1.92)$\\
+  & $I_1$ & $(2.12,1.635)$\\\midrule
+2 & $C_2$ & $(2.9,2.92)$\\
+  & $I_0$ & $(1.68,1.98)$, $(1.195,1.985)$\\
+  & $I_2$ & $(2.62,2.62)$, $(2.41,2.68)$\\
+  & $I_3$ & $(1.4,2.9)$\\\midrule
+3 & $I_3$ and $W_2$ & $(1.96,2.92)$ in both\\\bottomrule
 \end{tabular}
 \end{center}
-Each stage uses only already proved ownership.  For the final stage, the
-initial polygons suffice for every owner except $C_2,I_0,I_2,I_3$; all the
-other intermediate enlargements may be forgotten.
+Stage 1 uses the initial polygons. Stage 2 uses only those polygons
+enlarged by stage 1's points. Stage 3 uses only the initial polygons
+enlarged by stage 2's points; stage 1 may be forgotten. Within a stage,
+all computer-assisted assertions use the same preceding state. Convexity
+makes each owner's enlarged hull strictly compulsory.
 
-A fresh exact replay checked this complete shortened chain, starting from
-the source initial polygons, using the source rational pose kernel and all
-96 angle intervals.  It contains 62 point promotions in 11 owner checks.
-The original journal contains 140 promotions in 27 owner checks, followed
-by a terminal pose-domain exclusion.  Thus the revised certificate removes
-55.7\% of the promotions and replaces the terminal search by a shared-point
-contradiction.  The standalone replay and its source-bound receipt are
-\path{quick/scripts/replay_case3.py} and \path{quick/results/case3.json}.
-This is the shortened computer-assisted exclusion of case~3. The other
-case exclusions and the surviving-family reduction are separate components
-of the global proof.
+There are twelve assertions: the elementary floor bridge and eleven
+computer-assisted assertions in eight owner checks. Each check covers
+all $96$ closed angle intervals, not sampled orientations. Fresh exact
+replays establish this chain from the initial compulsory polygons. They
+read the small table and the rational pose kernel, without reading the
+original propagation journal or accepting a historical success receipt.
+The preceding selected certificate used $62$ assertions in $11$ checks;
+the original journal used $140$ in $27$ checks before an empty-domain test.
+The new table is in
+\path{work/readability-research/ownership-simplification/cases35/case3-points.json}.
+The command \texttt{python3 verify.py --ownership --jobs 2} checks it and
+writes \path{verification/revised-ownership/case3.json}.
+The initial-region lemmas and the rational pose kernel's boundary argument
+remain necessary. This is a complete computer-assisted exclusion of
+case~3, not an independent replay of the other cases or the global theorem.
 
 \paragraph{Why lower-dimensional pieces do not invalidate this replay.}
 \begin{lemma}[Boundary preservation for the shortened case~3 certificate]
@@ -3081,26 +3265,80 @@ before any of them is used by a later stage.
 \begin{tabular}{c r r}
 Stage & New compulsory points & Owner checks\\
 \hline
-1 & 45 & 8\\
-2 & 36 & 8\\
-3 & 49 & 9\\
-4 & 38 & 5\\
+1 & 19 & 7\\
+2 & 20 & 9\\
+3 & 14 & 8\\
+4 & 10 & 5\\
 5: the common point $z_5$ & 2 & 2\\
 \hline
-Total & 170 & 32
+Total & 65 & 31
 \end{tabular}
 \end{center}
 For the final implication, only the fourth-stage hulls of
 $W_1,W_2,I_1,I_2,I_3$ are needed; all other owners use their initial hulls.
-The original journal promotes 276 points in 50 owner checks and then
-performs an empty-domain test.  The shortened chain promotes 38.4\% fewer
-points and replaces that terminal test by the shared-point contradiction.
+The preceding selected certificate used $170$ assertions in $32$ owner
+checks. The new table reduces the asserted points by $61.8\%$, but removes
+only one owner check. It compresses the point data substantially while
+retaining almost all of the finite pose-cover work. The original journal
+used $276$ points in $50$ checks before an empty-domain test.
+
+\paragraph{The complete point table.}
+Write $G$ for the owner of $W_0,I_0$. Every coordinate below is an exact
+terminating decimal. Stage 1 uses the initial regions. Each later stage
+uses only the initial regions enlarged by the immediately preceding
+stage's listed points; all earlier enlargements may be forgotten.
+\begingroup\small
+\begin{longtable}{@{}c l p{.72\textwidth}@{}}
+\toprule
+Stage & Owner & New compulsory points\\\midrule
+\endfirsthead
+\toprule
+Stage & Owner & New compulsory points (continued)\\\midrule
+\endhead
+1 & $G$ & $(1.4,1)$, $(1.44,0.9)$, $(1.97,1.19)$\\
+ & $C_0$ & $(0.8595,0.937)$, $(0.9,0.95)$\\
+ & $C_2$ & $(2.9,2.92)$\\
+ & $C_3$ & $(0.9617,2.8892)$, $(0.99,2.918)$\\
+ & $I_1$ & $(2.4,1.3)$, $(2.58,1.78)$, $(2.4,1.84)$\\
+ & $I_2$ & $(2.12,2.252)$, $(2.2,2.2)$, $(2.3,2.15)$, $(2.6,2.4)$, $(2.4,2.6)$\\
+ & $I_3$ & $(1.198,2.406)$, $(1.76,2.25)$, $(1.6,2.55)$\\
+\midrule
+2 & $G$ & $(1.96,1.2)$\\
+ & $C_0$ & $(0.98,0.96)$, $(0.54,0.99)$\\
+ & $C_2$ & $(2.9,2.9)$, $(2.9,2.92)$\\
+ & $C_3$ & $(0.962,2.89)$, $(0.99,2.915)$\\
+ & $W_2$ & $(1.95,3)$\\
+ & $W_3$ & $(0.9387,1.9426)$, $(0.9,1.985)$\\
+ & $I_1$ & $(2.9,1.5)$, $(2.88,1.58)$, $(2.6,1.95)$, $(2.3,1.8)$\\
+ & $I_2$ & $(2.3,2.14)$, $(2.72,2.46)$, $(2.54,2.82)$\\
+ & $I_3$ & $(1.7,2.3)$, $(1.57,2.58)$, $(1.155,2.475)$\\
+\midrule
+3 & $G$ & $(1.969,1.205)$\\
+ & $C_3$ & $(0.978,2.972)$\\
+ & $W_1$ & $(2.9,2)$, $(2.9,2.4)$\\
+ & $W_2$ & $(1.9,2.92)$\\
+ & $W_3$ & $(0.99,1.99)$\\
+ & $I_1$ & $(2.6,1.2)$, $(2.9,1.5)$\\
+ & $I_2$ & $(1.91,2.71)$, $(1.96,2.52)$, $(2.3,2.1)$, $(2.5,2.9)$\\
+ & $I_3$ & $(1.839,2.355)$, $(1.7,2.5)$\\
+\midrule
+4 & $W_1$ & $(2.89,2.28)$\\
+ & $W_2$ & $(1.875,2.89)$\\
+ & $I_1$ & $(2.94,1.39)$, $(2.884,1.584)$, $(2.62,1.955)$\\
+ & $I_2$ & $(2.45,2.1)$, $(2.62,2.24)$, $(2.8,2.6)$\\
+ & $I_3$ & $(1.884,2.416)$, $(1.77,2.6)$\\
+\midrule
+5 & $I_2$ & $(2.9,2.5)$\\
+ & $W_1$ & $(2.9,2.5)$\\
+\bottomrule
+\end{longtable}
+\endgroup
 
 \paragraph{Validation and boundary scope.}
 A fresh forward replay of the complete selected chain passed using exact
 rational arithmetic and all 96 angle intervals.  The new checker does not
 accept a historical success record as a premise: it reconstructs the pose
-covers and checks every one of the 170 promotions.  Earlier hulls are used
+covers and checks every one of the $65$ assertions. Earlier hulls are used
 only after the selected chain has established them.
 
 The strict-slack boundary argument for the shortened case~3 chain applies
@@ -3118,26 +3356,21 @@ proof; its replay neither checks the other cases nor formalizes the
 geometric checker in a proof assistant.
 
 \paragraph{Reproducible provenance.}
-The selected data are in \path{quick/data/case5-plan.json}; the fresh result is
-\path{quick/results/case5.json}.  The uniform replay command is
+The selected data are in
+\path{work/readability-research/ownership-simplification/cases35/case5-points.json};
+the fresh result is \path{verification/revised-ownership/case5.json}.
+The uniform replay command is
 \begin{verbatim}
-python3 quick/run_all.py --only case5_short_exclusion --jobs 4
+python3 verify.py --ownership --jobs 2
 \end{verbatim}
 Only the standard library and the source modules
 \texttt{marker\_cases.py}, \texttt{forced\_markers.py}, and
-\texttt{exact\_poses.py}, together with the original case~5 journal,
-are required.  Source files are read-only; bytecode writes and optimized
-Python execution are disabled.  The receipt binds all these inputs and the
-executed replay by SHA-256.  The two data hashes are:
-\begin{center}
-\small
-\begin{tabular}{l l}
-Original journal & \texttt{02bd58222a7e0d4dab1a963491e12c0f}\\
- & \texttt{3eb3efbbcb2f3619d9125d0c5975d994}\\
-Selected plan & \texttt{415d5b76fcca74f0eb3060130e7221a9}\\
- & \texttt{48396fa3cb385b11bf7a04e5d0180f3d}\\
-\end{tabular}
-\end{center}
+\texttt{exact\_poses.py}, together with the selected point table, are
+required by this case's replay. The original propagation journal is not
+read. Source files are read-only; bytecode writes and optimized Python
+execution are disabled. The receipt binds the inputs and executed replay
+by SHA-256. The full portable command additionally checks the older,
+longer certificate as a redundant verification route.
 
 
 \section{The exact reference packing}
@@ -3231,63 +3464,80 @@ claimed as new here. The mixed support comparison in
 Section~\ref{sec:mixed-alignment} is the new endpoint of this synthesis.
 
 The shared archive supplies the marker geometry, construction and source
-pose data. The present revision adds the displayed corridor, scalar-row
-and first-row column arguments and substitutes their four spatial
-consequences into the retained hull ancestry. Source receipts serve only
+pose data. The surviving-case reduction retains the displayed corridor,
+scalar-row and first-row column arguments and their four spatial
+consequences. This revision adds the elementary case-$0$ terminal trap,
+the case-$3$ floor bridge and smaller case-$3$ and case-$5$ point tables.
+These elementary lemmas were derived for this simplification; no claim
+of literature novelty is made. The marker-cover premises and rational
+pose kernel remain inherited inputs. Source receipts serve only
 as integrity references or comparison targets after exact geometric
 operations have succeeded; saved success flags are not computational axioms.
 
-The finite verification record has three parts: the unchanged acceptance
-of ownership cases $0$--$5$; the $103$-node case-$6$ graph with its
-own-rule evidence and parent identities; and the fifth-prefix mixed-support
-certificate. The new graph's SHA-256 digest is
+The finite verification record has three parts: the ownership exclusions,
+with the revised deductions for cases $0,3,5$ and the retained deductions
+for cases $1,2,4$; the $103$-node case-$6$ graph with its own-rule evidence
+and parent identities; and the fifth-prefix mixed-support certificate.
+The case-$6$ graph is unchanged by the present ownership simplification.
+Its retained research-graph SHA-256 digest is
 \begin{center}\small\texttt{27a06dbbacfcbcdc8eb682f610d2dd1a63b7}\\
 \texttt{59e86f5c6a780c32624b581b4fee}.\end{center}
-Its new mathematical inputs are the seven-round hull/angle interface,
+Its mathematical inputs include the seven-round hull/angle interface,
 the corridor theorem, the scalar early-row interface, the first row-only
 round, the full-column interface and the first both-supports round.
 The latter supplies exactly the four extrema in
 Proposition~\ref{input:global}. The retained later numerical covers are
 reused only after their original hypotheses and geometry identities have
-been revalidated. The selected route does not use additional exploratory
-propagation states, a two-prefix endpoint, or a different case-$0$ exclusion.
+been revalidated. This surviving-case route does not use additional
+exploratory propagation states or a two-prefix endpoint. The revised
+case-$0$ terminal proof uses the already selected original ancestry,
+without introducing alternative marker motions.
 
 The source-bound checkers run in CPython~3.12.4 with exact integer and
 rational arithmetic; optimized execution with \texttt{-O} is rejected.
 They require no numerical solver, network connection or Lean installation.
 Reproduction requires the selected immutable source data, every imported
-arithmetic kernel, the mathematical input statements, the two new
-propagation schedules, and the dependency assembler. A reproducible edit
-script separately binds every source fragment used to generate this
-self-contained manuscript. File hashes establish identities; the proofs
+arithmetic kernel, the mathematical input statements, the retained
+propagation schedules, the smaller ownership tables and the dependency
+assembler. The manuscript contains the complete new elementary proofs
+and point tables. File hashes establish identities; the proofs
 and exact deductions establish their mathematical meaning.
 
-The new components have been replayed, and the complete revised
-dependency closure has been independently rechecked against the unchanged
-exact executions. The supplied portable entry points are
+The smaller case-$3$ and case-$5$ chains have been freshly replayed from
+their initial hulls. The case-$0$ bridge freshly checks the six existing
+tail promotions and the trap-point memberships, conditional on its
+retained thirteen-round ancestry. Separately, the case-$6$ dependency
+closure has been rechecked against its component executions. These are
+component and dependency checks, not a newly executed end-to-end replay.
+The supplied portable entry points are
 \begin{verbatim}
 python3 verify.py --check-inputs
+python3 verify.py --ownership --jobs 2
 python3 verify.py --early
 python3 verify.py --full --jobs 2
 \end{verbatim}
-The first command checks the manifest-bound input inventory. The second
-freshly reconstructs the conditional early interfaces, both selected
+The first command checks the manifest-bound input inventory. Ownership
+mode freshly checks the selected case-$3$ and case-$5$ tables and the
+case-$0$ bridge; it does not replay the latter's earlier ancestry.
+Early mode freshly reconstructs the conditional early interfaces, both selected
 propagation states and the four strict extrema; it does not establish
 their earlier global ancestry. This conditional command has passed in
 the portable package. Full mode first executes the unchanged $61$-step
 baseline schedule, a computational superset of the mathematical proof,
-and then the early components and revised $103$-node assembly. In
+and also requires the selected ownership replays, early components and
+revised $103$-node assembly. In
 particular, the runner may replay excluded branches that the revised
 argument no longer needs. The option \texttt{--revised} reassembles the
-new route only after a complete baseline run is available. The new
+route only after the required baseline and component results are available. The
 wrapper and assembly checks have been reviewed, but the full portable
 command has not yet been executed end to end. This remaining execution
 must not be inferred from the successful component checks.
 
 The supplementary local-isolation and fine-capture certificates are
 bound to their own original boxes and are not needed by this proof.
-Likewise, a small case-$0$ terminal check assumes its stated compulsory
-hulls; the selected complete case-$0$ ancestry supplies them separately.
+Likewise, the case-$0$ bridge check assumes its stated compulsory hulls;
+the selected complete case-$0$ ancestry supplies them separately, and
+Lemma~\ref{lem:case-zero-trap} supplies the terminal geometric contradiction.
 
 The formalized repository was inspected at commit
 \texttt{cdc746ed907d258057c283aeb6d077cb2c27e349}.

@@ -3,8 +3,10 @@
 **Revised geometric manuscript:** [Eleven squares: owners, support chains, and angle penalties](paper/README.md)
 gives the marker-based reduction and an independent-angle support argument.
 An early corridor and two virtual supports shorten the surviving case to a
-103-node dependency graph. The paper includes direct proofs of the geometric
-foundations and a self-contained verification supplement. See its verification
+103-node dependency graph. The excluded cases now include an elementary
+terminal argument for case 0, a 12-point certificate for case 3, and a
+65-point certificate for case 5. The paper includes direct proofs of the
+geometric foundations and a self-contained verification supplement. See its verification
 notes for the distinction between completed component checks and the portable
 full replay.
 
